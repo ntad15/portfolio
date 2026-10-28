@@ -96,6 +96,9 @@ body{margin:0;background:var(--night);color:var(--text);font:400 16px/1.55 var(-
 @keyframes ping{from{transform:scale(.5);opacity:1}to{transform:scale(1.7);opacity:0}}
 .hot:hover{background:#ff8a78}
 .hot:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+/* nothing in the drawing takes taps except the cameo: the stacked screens, popups and props are invisible when off but would still catch taps meant for him */
+#scene{pointer-events:none}
+.cameo{cursor:pointer;pointer-events:visiblePainted}
 .hot b{font-weight:600}
 /* portrait only: the four tags parked in the strip, the scene's own lit, so every card is one tap away on a phone */
 .chips{display:none;width:100%;gap:6px;flex-wrap:wrap}
@@ -218,8 +221,29 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <clipPath id="cMain"><rect x="578" y="178" width="524" height="312" rx="4"/></clipPath>
 <clipPath id="cTerm"><rect x="1206" y="174" width="226" height="328" rx="4"/></clipPath>
 <clipPath id="cHeads"><rect x="1206" y="372" width="226" height="114"/></clipPath>
+<clipPath id="cBooth"><rect x="606" y="340" width="68" height="44"/></clipPath>
+<!-- the cameo: the maker, drawn once with his feet at the origin and cloned into every .cameo spot in the scene -->
+<g id="meTpl"><g class="meBody">
+<rect x="-13" y="-30" width="11" height="28" rx="3" fill="#2a3042"/><rect x="2" y="-30" width="11" height="28" rx="3" fill="#2a3042"/>
+<rect x="-17" y="-6" width="16" height="7" rx="3.5" fill="#10172a"/><rect x="1" y="-6" width="16" height="7" rx="3.5" fill="#10172a"/>
+<path d="M-19 -74Q-25 -102 0 -104Q25 -102 19 -74Z" fill="#3b98a3" stroke="#10172a" stroke-width="3" stroke-linejoin="round"/>
+<rect x="-22" y="-78" width="44" height="52" rx="11" fill="#2e7d86" stroke="#10172a" stroke-width="3"/>
+<path d="M-11 -38h22" stroke="#10172a" stroke-width="2" opacity=".45"/>
+<path d="M-6 -78v9M6 -78v9" stroke="#f3ead6" stroke-width="2" stroke-linecap="round"/>
+<rect x="-7" y="-66" width="14" height="14" rx="3.5" fill="#120f0d"/><path d="M-3.5 -55.5v-7l7 7v-7" stroke="#ffb000" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<g class="meArmL"><path d="M-20 -70L-32 -46" stroke="#10172a" stroke-width="13" stroke-linecap="round"/><path d="M-20 -70L-32 -46" stroke="#2e7d86" stroke-width="8" stroke-linecap="round"/><circle cx="-33" cy="-43" r="5.5" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/></g>
+<g class="meArmR"><path d="M20 -70L32 -46" stroke="#10172a" stroke-width="13" stroke-linecap="round"/><path d="M20 -70L32 -46" stroke="#2e7d86" stroke-width="8" stroke-linecap="round"/>
+<circle class="meOpen" cx="33" cy="-43" r="5.5" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/>
+<g class="meThumb" opacity="0" transform="rotate(-26.6 33 -44)"><rect x="26.5" y="-50" width="13" height="12" rx="4" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/><rect x="30.25" y="-39" width="5.5" height="11" rx="2.75" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/></g>
+<g class="mePoint" opacity="0"><circle cx="33" cy="-43" r="5.5" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/><path d="M36 -37L40.5 -28" stroke="#10172a" stroke-width="5.5" stroke-linecap="round"/><path d="M36 -37L40.5 -28" stroke="#b9794f" stroke-width="2.5" stroke-linecap="round"/></g>
+<g class="meWrench" opacity="0"><path d="M36 -37L43 -23" stroke="#9fb0d6" stroke-width="7" stroke-linecap="round"/><circle cx="45.5" cy="-18" r="7" fill="none" stroke="#9fb0d6" stroke-width="4"/></g>
+</g>
+<g class="meHead"><circle cx="-17" cy="-94" r="3.5" fill="#b9794f" stroke="#10172a" stroke-width="2"/><circle cx="17" cy="-94" r="3.5" fill="#b9794f" stroke="#10172a" stroke-width="2"/><circle cx="0" cy="-95" r="17" fill="#b9794f" stroke="#10172a" stroke-width="3"/><path d="M-17.5 -97Q-16 -117 0 -117Q16 -117 17.5 -97Q9 -105 0 -105Q-9 -105 -17.5 -97Z" fill="#1c1410" stroke="#10172a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="-6.5" cy="-94" r="5.5" fill="#fff" stroke="#10172a" stroke-width="2"/><circle cx="6.5" cy="-94" r="5.5" fill="#fff" stroke="#10172a" stroke-width="2"/><path d="M-1 -94h2M-12 -95h-4M12 -95h4" stroke="#10172a" stroke-width="2"/><circle cx="-5.5" cy="-93.5" r="2.2" fill="#10172a"/><circle cx="7.5" cy="-93.5" r="2.2" fill="#10172a"/><path d="M-5 -85Q0 -80 5 -85" stroke="#10172a" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+<g class="meHat" opacity="0"><path d="M-18 -112a18 18 0 0 1 36 0z" fill="#ffb000" stroke="#10172a" stroke-width="3"/><rect x="-23" y="-115" width="46" height="6" rx="3" fill="#ffb000" stroke="#10172a" stroke-width="2"/></g>
+</g></g>
 <pattern id="pBrick" width="80" height="40" patternUnits="userSpaceOnUse"><rect width="80" height="40" fill="#1a1613"/><path d="M0 0H80M0 20H80M40 0V20M0 20V40M80 20V40" stroke="#241e19" stroke-width="2"/></pattern>
-<g id="envShape"><rect x="-30" y="-20" width="60" height="40" rx="4" fill="#f3ead6" stroke="#10172a" stroke-width="3"/><path d="M-27 -17L0 4L27 -17" fill="none" stroke="#10172a" stroke-width="3" stroke-linejoin="round"/><circle cx="0" cy="4" r="6" fill="#c23a26" stroke="#10172a" stroke-width="2"/></g>
+<!-- a bag of cash: every booked trade becomes a payment, and this is what travels the pipes -->
+<g id="envShape"><path d="M-9 -22Q-26 -12 -26 8Q-26 28 0 28Q26 28 26 8Q26 -12 9 -22Z" fill="#c9a063" stroke="#10172a" stroke-width="3" stroke-linejoin="round"/><path d="M-11 -24Q-12 -31 -7 -33Q0 -36 7 -33Q12 -31 11 -24Z" fill="#c9a063" stroke="#10172a" stroke-width="3" stroke-linejoin="round"/><path d="M-12 -23H12" stroke="#10172a" stroke-width="3.5" stroke-linecap="round"/><text x="0" y="17" text-anchor="middle" class="s-disp" font-size="28" font-weight="800" fill="#10172a">$</text></g>
 </defs>
 
 <g clip-path="url(#cView)"><g id="cam"><g id="world">
@@ -313,6 +337,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text x="594" y="202" class="s-mono" font-size="13" fill="#8fa6d6">Meanwhile, behind the login</text>
 <text id="granted" x="840" y="254" text-anchor="middle" class="s-disp" font-size="32" fill="#4fd18b" opacity="0" letter-spacing="2">ACCESS GRANTED</text>
 <rect x="592" y="318" width="96" height="128" rx="6" fill="#1d2b52" stroke="#3d5590" stroke-width="3"/><rect x="606" y="340" width="68" height="44" rx="4" fill="#0d1530"/>
+<g clip-path="url(#cBooth)"><g class="cameo" data-me="login" data-card="iam" transform="translate(640 456)"></g></g>
 <rect id="sign1" x="586" y="282" width="108" height="34" rx="5" fill="#f3ead6"/><text x="640" y="305" text-anchor="middle" class="s-disp" font-size="18" fill="#121826">BADGE CHECK</text><text x="640" y="410" text-anchor="middle" class="s-mono" font-size="13" fill="#ffb000">OIDC</text>
 <rect x="712" y="318" width="96" height="128" rx="6" fill="#1d2b52" stroke="#3d5590" stroke-width="3"/><rect x="726" y="340" width="68" height="44" rx="4" fill="#0d1530"/>
 <rect id="sign2" x="706" y="282" width="108" height="34" rx="5" fill="#f3ead6"/><text x="760" y="305" text-anchor="middle" class="s-disp" font-size="18" fill="#121826">PERMISSIONS</text><text x="760" y="410" text-anchor="middle" class="s-mono" font-size="13" fill="#ffb000">OAuth2</text>
@@ -393,6 +418,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <rect x="598" y="442" width="488" height="12" rx="6" fill="#17233f"/>
 <rect id="fillBar" x="598" y="442" width="0" height="12" rx="6" fill="#4fd18b"/>
 <text id="fillTxt" x="598" y="478" class="s-mono" font-size="13" fill="#cbd5ea">0 / 50,000 filled</text>
+<g class="cameo" data-me="route" data-card="exec" transform="translate(760 438) scale(.6)"></g>
 </g>
 
 <g id="scrFinal" opacity="0">
@@ -473,6 +499,9 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 </g>
 </g>
 
+<!-- the maker climbs up beside the robot at the end; the desk, drawn later, hides him until then -->
+<g class="cameo" data-me="end" data-card="mcp" transform="translate(1550 597)"></g>
+
 <!-- trader on his chair -->
 <g id="rig">
 <rect x="196" y="352" width="104" height="270" rx="30" fill="#352c26" stroke="#10172a" stroke-width="4"/>
@@ -546,6 +575,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text x="1005" y="738" text-anchor="middle" class="s-disp" font-size="22" fill="#dcb88c" letter-spacing="3">PIPES</text>
 <path d="M1005 750v24m-9-9l9 9l9-9" stroke="#dcb88c" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
+<!-- the maker pops up beside the gateway reader from below the frame edge -->
+<g class="cameo" data-me="gate" data-card="mcp" transform="translate(650 892)"></g>
 </g>
 <g id="gwBadge" opacity="0"><rect x="-11" y="-8" width="22" height="16" rx="3" fill="#f3ead6" stroke="#10172a" stroke-width="2"/><rect x="-7" y="-4" width="6" height="8" rx="1" fill="#ffb000"/><path d="M2 -2H7M2 2H7" stroke="#10172a" stroke-width="1.5"/></g>
 
@@ -587,13 +618,16 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 </g>
 
 <g id="ghosts"></g>
-<g id="envB" opacity="0"><g id="envShake"><g transform="scale(.75)"><use href="#envShape"/></g><g id="envTag" opacity="0"><rect x="6" y="-32" width="36" height="17" rx="4" fill="#ffb000" stroke="#10172a" stroke-width="2"/><text x="24" y="-19.5" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">+REF</text></g></g></g>
+<!-- the maker pushes the bag through the pipes: placed behind it every frame by renderPipe, drawn under it so his hands are on it -->
+<g class="cameo" data-me="pipes" data-card="pay"></g>
+<g id="envB" opacity="0"><g id="envShake"><g transform="scale(.75)"><use href="#envShape"/></g><g id="envTag" opacity="0"><rect x="12" y="-36" width="36" height="17" rx="4" fill="#ffb000" stroke="#10172a" stroke-width="2"/><text x="30" y="-23.5" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">+REF</text></g></g></g>
 <g id="stations"></g>
 
-<text id="jamTxt" x="1052" y="1120" text-anchor="middle" class="s-disp" font-size="36" fill="#ffb000" opacity="0" letter-spacing="2">JAM!</text>
-<text id="tinkTxt" x="964" y="1224" text-anchor="end" class="s-disp" font-size="30" fill="#f3ead6" opacity="0" letter-spacing="2">TINK!</text>
+<text id="jamTxt" x="1094" y="1108" text-anchor="middle" class="s-disp" font-size="36" fill="#ffb000" opacity="0" letter-spacing="2">JAM!</text>
+<text id="tinkTxt" x="1184" y="1286" text-anchor="start" class="s-disp" font-size="30" fill="#f3ead6" opacity="0" letter-spacing="2">TINK!</text>
 
-<g id="worker"><g id="workerBody">
+<!-- the screening crew: a worker under the SCREEN station who walks over and knocks the jam loose; mirrored so he works the bag from the right while the maker pushes from the left -->
+<g id="worker"><g transform="matrix(-1 0 0 1 2144 0)"><g id="workerBody">
 <rect x="980" y="1304" width="10" height="38" rx="3" fill="#3a2f27"/><rect x="994" y="1304" width="10" height="38" rx="3" fill="#3a2f27"/>
 <rect x="972" y="1262" width="40" height="46" rx="9" fill="#ff8a3d" stroke="#10172a" stroke-width="3"/>
 <rect x="973.5" y="1280" width="37" height="6" fill="#f3ead6"/>
@@ -602,7 +636,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <path d="M975 1243a17 17 0 0 1 34 0z" fill="#ffb000" stroke="#10172a" stroke-width="3"/>
 <rect x="970" y="1239" width="44" height="6" rx="3" fill="#ffb000" stroke="#10172a" stroke-width="2"/>
 <g id="wArm"><path d="M1006 1272L1030 1252" stroke="#8d5a3b" stroke-width="8" stroke-linecap="round"/><path d="M1030 1252L1042 1230" stroke="#9fb0d6" stroke-width="7" stroke-linecap="round"/><circle cx="1044" cy="1225" r="7" fill="none" stroke="#9fb0d6" stroke-width="4"/></g>
-</g></g>
+</g></g></g>
+
 <path d="M940 1300H1272M950 1300V1342M1066 1300V1342M1164 1300V1342M1264 1300V1342" stroke="#5a4a3c" stroke-width="5" stroke-linecap="round" fill="none"/>
 
 <g id="vault">
@@ -814,13 +849,30 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   var bills = [];
   for (var b = 0; b < 10; b++) bills.push(el('rect', { x: 228, y: 1523, width: 24, height: 14, rx: 2, fill: '#4fd18b', stroke: '#10172a', 'stroke-width': 2, opacity: 0 }, cg));
 
+  // The cameo: the maker, cloned from #meTpl into each .cameo spot (the parts he built). Tapping him opens that part's card.
+  var meTpl = $('#meTpl > g'), me = {};
+  $$('.cameo').forEach(function (g) {
+    var body = meTpl.cloneNode(true), w = WORK.filter(function (x) { return x.id === g.dataset.card; })[0];
+    var tip = document.createElementNS(NS, 'title'); tip.textContent = 'That’s me. Tap for ' + w.title;
+    g.appendChild(tip); g.appendChild(body);
+    me[g.dataset.me] = { body: body, head: body.querySelector('.meHead'), armL: body.querySelector('.meArmL'), armR: body.querySelector('.meArmR'),
+      open: body.querySelector('.meOpen'), thumb: body.querySelector('.meThumb'), point: body.querySelector('.mePoint'), wrench: body.querySelector('.meWrench'), hat: body.querySelector('.meHat') };
+    g.addEventListener('click', function (e) {
+      // a cameo faded out with its screen is not a target
+      var o = 1, n = g;
+      while (n && n.nodeName !== 'svg') { o *= parseFloat(getComputedStyle(n).opacity) || 0; n = n.parentNode; }
+      if (o > 0.5) { e.stopPropagation(); openCard(w); }
+    });
+  });
+  var pusher = $('.cameo[data-me=pipes]');
+
   var envB = $('#envB'), envTag = $('#envTag');
   var minHands = $$('.mh'), hNY = $('#hNY'), hLDN = $('#hLDN'), hTYO = $('#hTYO');
 
   /* ---------- timeline ---------- */
   // cx/cy/cw/ch: the portrait camera's frame point to centre and the size that must stay in view (the zoom follows from
   // that); follow 0..1 blends the camera onto the envelope in the pipes. Landscape shows the whole frame and ignores them.
-  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cx: 590, cy: 450, cw: 585, ch: 900, follow: 0, q1: 0, q2: 0 };
+  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cx: 590, cy: 450, cw: 585, ch: 900, follow: 0, q1: 0, q2: 0, wave: 0 };
   var T = {};
   var started = false;
 
@@ -836,7 +888,17 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   gsap.set('#crack', { svgOrigin: '700 540' });
   gsap.set('#hatchDoor', { svgOrigin: '1005 694' });
   gsap.set('#spokes', { svgOrigin: '240 1530' });
+  // the cameo's pivots are in his own coordinates: neck for the head, shoulders for the arms
+  Object.keys(me).forEach(function (k) {
+    gsap.set(me[k].head, { svgOrigin: '0 -78' }); gsap.set(me[k].armR, { svgOrigin: '20 -70' }); gsap.set(me[k].armL, { svgOrigin: '-20 -70' });
+  });
+  gsap.set(me.login.body, { y: 40, opacity: 0 });
+  gsap.set(me.gate.body, { y: 130 });
+  gsap.set(me.route.body, { y: 50, opacity: 0 });
+  gsap.set(me.end.body, { y: 130 });
+  gsap.set(me.pipes.body, { svgOrigin: '0 0' }); // he leans from the feet when he shoves
   gsap.set('#wArm', { svgOrigin: '1006 1272' });
+  gsap.set('#worker', { x: 90 }); // parked at the right end of the walkway, clear of the station's label; he walks in for the jam
   gsap.set('#coffee', { svgOrigin: '1010 598' });
   gsap.set('#ticket', { svgOrigin: '840 290' });
   gsap.set('#settledTxt', { svgOrigin: '240 1390' });
@@ -857,7 +919,6 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   gsap.set('#gwBadge', { x: 1480, y: 560 });
   gsap.set('#crack', { scale: 0 });
   gsap.set('#shades', { y: -90 });
-  gsap.set('#worker', { x: -30 });
   gsap.set('#settledTxt', { y: 12 });
 
   var Q1 = $('#m1 text').textContent, Q2 = $('#m4 text').textContent;
@@ -1043,15 +1104,22 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   T.jamStart = J;
   tl.to('#envShake', { x: 3, duration: 0.05, yoyo: true, repeat: 13, ease: 'none' }, J)
     .set('#jamTxt', { opacity: 1 }, J + 0.05)
-    .to('#worker', { x: 30, duration: 0.9, ease: 'power1.inOut' }, J + 0.4)
-    .to('#workerBody', { y: -4, duration: 0.15, yoyo: true, repeat: 5, ease: 'sine.inOut' }, J + 0.4)
+    // the bag sticks; the maker leans in and keeps pushing while the screening worker walks over and knocks it loose
+    .to(me.pipes.body, { rotation: 14, duration: 0.3, ease: 'power2.out' }, J + 0.4)
+    .to(me.pipes.body, { x: 7, duration: 0.12, yoyo: true, repeat: 7, ease: 'power2.in' }, J + 0.7)
+    .to('#worker', { x: -30, duration: 0.95, ease: 'power1.inOut' }, J + 0.35)
+    .to('#workerBody', { y: -4, duration: 0.15, yoyo: true, repeat: 5, ease: 'sine.inOut' }, J + 0.35)
     .to('#wArm', { rotation: -28, duration: 0.2 }, J + 1.4)
     .to('#wArm', { rotation: -12, duration: 0.08, yoyo: true, repeat: 3, ease: 'power2.in' }, J + 1.65)
     .set('#tinkTxt', { opacity: 1 }, J + 1.7)
     .to('#jamTxt', { opacity: 0, duration: 0.2 }, J + 2.0)
     .to('#envShake', { y: -12, duration: 0.12, yoyo: true, repeat: 1, ease: 'power2.out' }, J + 2.05)
     .to('#tinkTxt', { opacity: 0, duration: 0.3 }, J + 2.3)
-    .to('#wArm', { rotation: 0, duration: 0.3 }, J + 2.3);
+    .to('#wArm', { rotation: 0, duration: 0.3 }, J + 2.3)
+    .to(me.pipes.body, { rotation: 0, duration: 0.3 }, J + 2.3)
+    // job done, back to his post
+    .to('#worker', { x: 90, duration: 0.9, ease: 'power1.inOut' }, J + 2.7)
+    .to('#workerBody', { y: -4, duration: 0.15, yoyo: true, repeat: 5, ease: 'sine.inOut' }, J + 2.7);
   var J2 = J + 2.3;
   T.jamEnd = J2;
   var D_END = TOTAL + 4 * GAP + 40;
@@ -1087,6 +1155,33 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     .to('#bot', { y: -14, duration: 0.18, yoyo: true, repeat: 3, ease: 'power2.out' }, R + 3.0)
     .to({}, { duration: 0.01 }, R + 4.6);
 
+  // The cameo's beats: one entrance, one gesture per spot, and the bouncer's head shake borrowed for the refusal
+  function nod(m, t) { tl.to(m.head, { rotation: 9, duration: 0.12, yoyo: true, repeat: 1, ease: 'sine.inOut' }, t); }
+  function thumbsUp(m, t) {
+    tl.to(m.armR, { rotation: -150, duration: 0.3, ease: 'back.out(2)' }, t)
+      .set([m.open, m.point], { opacity: 0 }, t + 0.12).set(m.thumb, { opacity: 1 }, t + 0.12);
+  }
+  // login: the clerk in the BADGE CHECK window nods at each stamp and approves the whole thing
+  tl.to(me.login.body, { y: 0, opacity: 1, duration: 0.4, ease: 'back.out(1.8)' }, L + 4.1);
+  [0, 1, 2].forEach(function (k) { nod(me.login, L + 4.95 + k * 0.85); });
+  thumbsUp(me.login, L + 8.4);
+  // the pick: up beside the reader, yes to QUOTES and NEWS, no to TRADING, then back down when the order is in
+  tl.to(me.gate.body, { y: 0, duration: 0.45, ease: 'back.out(1.8)' }, G + 0.6);
+  nod(me.gate, G + 1.35); nod(me.gate, G + 1.7);
+  tl.to(me.gate.head, { rotation: -10, duration: 0.12, yoyo: true, repeat: 3, ease: 'sine.inOut' }, G + 2.05);
+  thumbsUp(me.gate, G + 2.5);
+  tl.to(me.gate.body, { y: 130, duration: 0.35, ease: 'power2.in' }, B);
+  // booked: the small dispatcher on the route screen waves each slice through
+  tl.to(me.route.body, { y: 0, opacity: 1, duration: 0.4, ease: 'back.out(1.8)' }, B + 0.2)
+    .set(me.route.open, { opacity: 0 }, B + 0.3).set(me.route.point, { opacity: 1 }, B + 0.3);
+  for (var fk = 0; fk < 6; fk++) tl.to(me.route.armR, { rotation: -63, duration: 0.1, yoyo: true, repeat: 1, ease: 'power2.out' }, B + 0.4 + fk * 0.22);
+  thumbsUp(me.route, B + 2.6);
+  // pipeline: he pushes the bag the whole way (renderPipe places him); one wave from the vault door once it has settled
+  tl.to(P, { wave: 1, duration: 0.2, yoyo: true, repeat: 3, ease: 'sine.inOut' }, tSettle + 0.2);
+  // reveal: up beside the robot, high five at "Told you."
+  tl.to(me.end.body, { y: 0, duration: 0.5, ease: 'back.out(1.4)' }, R + 2.8)
+    .to(me.end.armL, { rotation: 120, duration: 0.3, ease: 'back.out(2)' }, R + 3.3);
+
   // Portrait camera: it rides along with the action. Each move ends before the next starts, so no two tweens fight.
   function cam(t, x, y, w, h, d, ease) { tl.to(P, { cx: x, cy: y, cw: w, ch: h, duration: d, ease: ease || 'power2.inOut' }, t); }
   cam(L - 0.4, 830, 340, 480, 740, 0.4);              // the sign-in form
@@ -1103,7 +1198,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   tl.to(P, { follow: 0, duration: 0.6, ease: 'power1.inOut' }, R);
   cam(R, 840, 380, 510, 780, 0.6);                    // order complete
   cam(R + 1.5, 430, 430, 520, 800, 0.5);              // shades
-  cam(R + 2.6, 1300, 470, 520, 800, 0.5);             // the robot would like some credit
+  cam(R + 2.6, 1320, 470, 520, 800, 0.5);             // the robot would like some credit; the maker is up there too
   cam(R + 3.9, 840, 380, 510, 780, 0.6);
 
   var starts = SCENES.map(function (sc) { return tl.labels[sc.id]; });
@@ -1124,6 +1219,14 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   }
   function renderPipe(d, t) {
     place(envB, d, d > 0 && d < TOTAL, 1);
+    // the maker runs 34 behind the bag pushing it; on the drops he slides down beside the pipe with it; he stops at the vault door
+    var dp = Math.min(Math.max(d - 34, 0), TOTAL - 34), q0 = pipe.getPointAtLength(dp), q1 = pipe.getPointAtLength(Math.min(dp + 2, TOTAL));
+    var tx = q1.x - q0.x, ty = q1.y - q0.y, tn = Math.hypot(tx, ty) || 1; tx /= tn; ty /= tn;
+    var v = Math.abs(ty), pr = Math.max(0, tx), pl = Math.max(0, -tx), hop = d > 0 && d < TOTAL ? Math.abs(Math.sin(d / 37)) * 3 : 0; // a running bob, about three steps a second at pipe speed
+    // the inlet sits at the very top of the basement, so he hangs on below it (feet no higher than 1030) instead of poking out of the frame
+    pusher.setAttribute('transform', 'translate(' + (q0.x + 44 * v).toFixed(1) + ' ' + Math.max(q0.y + 45 - hop, 1030).toFixed(1) + ')');
+    me.pipes.armR.setAttribute('transform', 'rotate(' + (-150 * v - 63 * pr - 110 * P.wave).toFixed(1) + ' 20 -70)');
+    me.pipes.armL.setAttribute('transform', 'rotate(' + (150 * v + 63 * pl).toFixed(1) + ' -20 -70)');
     ghosts.forEach(function (g, k) { var gd = d - (k + 1) * GAP; place(g, gd, gd > 0 && gd < TOTAL, 0.4); });
     envTag.setAttribute('opacity', d > STN[1].d ? 1 : 0);
     lamps.forEach(function (l, k) {

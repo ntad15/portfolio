@@ -97,6 +97,12 @@ body{margin:0;background:var(--night);color:var(--text);font:400 16px/1.55 var(-
 .hot:hover{background:#ff8a78}
 .hot:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 .hot b{font-weight:600}
+/* portrait only: the four tags parked in the strip, the scene's own lit, so every card is one tap away on a phone */
+.chips{display:none;width:100%;gap:6px;flex-wrap:wrap}
+.chips button{appearance:none;flex:1 1 auto;min-height:36px;padding:0 8px;border:2px solid rgba(241,231,210,.22);border-radius:999px;background:transparent;color:var(--text);font:600 10px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.chips button.on{background:var(--coral);border-color:#10172a;color:#10172a}
+.chips.all button.on{background:transparent;border-color:rgba(255,111,89,.75);color:var(--coral)} /* the reveal lights all four without a wall of coral beside the contact buttons */
+.chips button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 
 .intro{position:absolute;inset:0;z-index:4;display:grid;place-items:center;padding:16px;background:linear-gradient(180deg,rgba(9,14,27,.5),rgba(9,14,27,.9));text-align:center;transition:opacity .35s}
 .intro.gone{opacity:0;pointer-events:none}
@@ -162,14 +168,21 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   .links .full{display:none}
   .links .short{display:inline}
 }
-/* portrait: the bar, then the scene cropped to the monitor column, then the strip under it instead of over it */
+/* portrait: the bar, then the scene with a camera that pans and zooms to the action, then the strip under it instead of over it */
 @media (orientation:portrait){
   .stage{position:relative;inset:auto;flex:1 1 0;min-height:0}
-  .hud-bottom{position:static;flex-wrap:wrap;background:none;min-height:0;padding:12px 16px max(14px,env(safe-area-inset-bottom,0px));gap:10px 16px}
+  .hud-bottom{position:static;flex-wrap:wrap;background:none;min-height:0;padding:10px 16px max(14px,env(safe-area-inset-bottom,0px));gap:10px 16px}
   .nav{order:-1;width:100%;justify-content:space-between}
   .segs{flex:1 1 0;max-width:260px}
   .segs button{width:auto;flex:1 1 0}
+  .caption .cx{font-size:17px}
+  .hot{display:none}
+  .chips{display:flex}
   .cta{width:100%}
+  /* cards open as a sheet from the bottom edge */
+  dialog.ticket{width:100%;max-width:none;margin:auto 0 0;max-height:calc(100% - 48px);border-radius:16px 16px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .ticket-in{padding:28px 20px 24px}
+  .ticket h2{font-size:34px}
 }
 @media (max-width:420px){
   .intro .kick{display:none}
@@ -627,6 +640,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
       <span class="ct" id="capTime">06:58</span>
       <p class="cx" id="capText" aria-live="polite">He's in early. The coffee is load-bearing.</p>
     </div>
+    <div class="chips" id="chips" role="group" aria-label="What I built"></div>
     <div class="nav" id="nav"><span class="where" id="where">1 of 6 · Arrival</span><ol class="segs" id="rail" aria-label="Scenes"></ol></div>
     <div class="cta" id="cta" hidden><a class="btn btn-hot" href="mailto:nahomatsbeha15@gmail.com">Email me</a><a class="btn" href="https://linkedin.com/in/nahomatsbeha" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
@@ -656,26 +670,27 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 
   /* ---------- content: edit here ---------- */
   var WORK = [
-    { id: 'iam', title: 'Identity & sign-in', org: 'Identity & Access Management · 2024–26',
+    { id: 'iam', tag: 'Identity', title: 'Identity & sign-in', org: 'Identity & Access Management · 2024–26',
       text: 'Every app has a velvet rope, and I helped work the door for 100M+ logins a day.',
       stack: ['OAuth2', 'OIDC', 'SAML', 'PingFederate'] },
-    { id: 'exec', title: 'Order execution', org: 'Asset Management Trading · 2026–present',
+    { id: 'exec', tag: 'Execution', title: 'Order execution', org: 'Asset Management Trading · 2026–present',
       text: '“Execute at best” is one click for the trader. Slicing it, sending it to the venues and getting it filled is the machinery behind that click. I build the machinery.',
       stack: ['Java', 'FIX', 'OMS/EMS', 'Kafka'] },
-    { id: 'pay', title: 'Payments pipeline', org: 'Payments Engineering · 2022–24',
+    { id: 'pay', tag: 'Payments', title: 'Payments pipeline', org: 'Payments Engineering · 2022–24',
       text: 'Every booked trade becomes a payment with somewhere to be. Under the desk I helped move a small city’s worth of them a day, with more money than there are stars, and got each one there in a quarter of the time.',
       stack: ['Java', 'Spring Boot', 'Kafka', 'BigQuery', 'Grafana'] },
-    { id: 'mcp', title: 'AI agent gateway', org: 'Identity & Access Management · 2024–26',
+    { id: 'mcp', tag: 'AI gateway', title: 'AI agent gateway', org: 'Identity & Access Management · 2024–26',
       text: 'The robot can only look things up because something checks its badge first. I built that something: one front door for every AI agent in the firm, and it’s open for business.',
       stack: ['MCP', 'Python', 'FastMCP', 'Netty', 'Java'] }
   ];
+  // chips: which of the WORK cards the scene is about (lit in the portrait strip)
   var SCENES = [
-    { id: 'arrival', clock: '06:58', name: 'Arrival', caption: "He's in early. The coffee is load-bearing." },
-    { id: 'login', clock: '06:59', name: 'Login', caption: 'Before anything trades, the desk has to know who he is. I worked on that part.' },
-    { id: 'order', clock: '07:00', name: 'The pick', caption: 'He asks the AI assistant. It has to get past my gateway first: it can read the market, but only he can trade.' },
-    { id: 'booked', clock: '07:00', name: 'Booked', caption: 'Sliced across venues, filled and booked. I work on the order and execution systems behind this.' },
-    { id: 'pipeline', clock: '07:01', name: 'Pipeline', caption: 'Under the desk, the money starts moving. I worked on these pipes too.' },
-    { id: 'reveal', clock: '07:02', name: 'Reveal', caption: 'COFE closed the morning up 4.20%. The robot would like some credit.' }
+    { id: 'arrival', clock: '06:58', name: 'Arrival', chips: [], caption: "He's in early. The coffee is load-bearing." },
+    { id: 'login', clock: '06:59', name: 'Login', chips: ['iam'], caption: 'Before anything trades, the desk has to know who he is. I worked on that part.' },
+    { id: 'order', clock: '07:00', name: 'The pick', chips: ['mcp'], caption: 'He asks the AI assistant. It has to get past my gateway first: it can read the market, but only he can trade.' },
+    { id: 'booked', clock: '07:00', name: 'Booked', chips: ['exec'], caption: 'Sliced across venues, filled and booked. I work on the order and execution systems behind this.' },
+    { id: 'pipeline', clock: '07:01', name: 'Pipeline', chips: ['pay'], caption: 'Under the desk, the money starts moving. I worked on these pipes too.' },
+    { id: 'reveal', clock: '07:02', name: 'Reveal', chips: ['iam', 'exec', 'pay', 'mcp'], caption: 'COFE closed the morning up 4.20%. The robot would like some credit.' }
   ];
 
   /* ---------- static rendering ---------- */
@@ -696,6 +711,15 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     return '<li><button type="button" data-go="' + i + '" aria-label="' + esc(s.name) + '"></button></li>';
   }).join('');
   var railBtns = $$('#rail button');
+  var chips = $('#chips');
+  chips.innerHTML = WORK.map(function (w) {
+    return '<button type="button" data-chip="' + w.id + '" aria-haspopup="dialog">' + esc(w.tag) + '</button>';
+  }).join('');
+  var chipBtns = $$('#chips button');
+  chipBtns.forEach(function (b) {
+    var w = WORK.filter(function (x) { return x.id === b.dataset.chip; })[0];
+    b.addEventListener('click', function () { openCard(w); });
+  });
 
   if (!window.gsap) {
     $('#nogsap').hidden = false;
@@ -794,8 +818,9 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   var minHands = $$('.mh'), hNY = $('#hNY'), hLDN = $('#hLDN'), hTYO = $('#hTYO');
 
   /* ---------- timeline ---------- */
-  // cam: the scene x the portrait crop centres on (landscape shows the whole width and ignores it)
-  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cam: 800, q1: 0, q2: 0 };
+  // cx/cy/cw/ch: the portrait camera's frame point to centre and the size that must stay in view (the zoom follows from
+  // that); follow 0..1 blends the camera onto the envelope in the pipes. Landscape shows the whole frame and ignores them.
+  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cx: 590, cy: 450, cw: 585, ch: 900, follow: 0, q1: 0, q2: 0 };
   var T = {};
   var started = false;
 
@@ -1059,10 +1084,27 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     .to('#shades', { y: 0, duration: 0.55, ease: 'bounce.out' }, R + 2.2)
     .set('#bubble', { opacity: 1 }, R + 3.0)
     .to('#bubble', { scale: 1, duration: 0.3, ease: 'back.out(2.5)' }, R + 3.0)
-    .to(P, { cam: 1400, duration: 0.6, ease: 'power2.inOut' }, R + 2.6)
-    .to(P, { cam: 800, duration: 0.6, ease: 'power2.inOut' }, R + 3.9)
     .to('#bot', { y: -14, duration: 0.18, yoyo: true, repeat: 3, ease: 'power2.out' }, R + 3.0)
     .to({}, { duration: 0.01 }, R + 4.6);
+
+  // Portrait camera: it rides along with the action. Each move ends before the next starts, so no two tweens fight.
+  function cam(t, x, y, w, h, d, ease) { tl.to(P, { cx: x, cy: y, cw: w, ch: h, duration: d, ease: ease || 'power2.inOut' }, t); }
+  cam(L - 0.4, 830, 340, 480, 740, 0.4);              // the sign-in form
+  cam(L + 2.2, 950, 400, 560, 860, 0.4);              // his phone buzzes for the second factor
+  cam(L + 3.8, 870, 380, 560, 860, 0.4);              // the badge checks behind the login
+  cam(O - 0.4, 840, 430, 490, 770, 0.4);              // the chat
+  cam(G - 0.3, 1230, 520, 585, 900, 0.3);             // the robot reaches for its badge
+  cam(G, 820, 600, 450, 690, 0.8, 'power1.inOut');    // ride the badge down to the reader in the desk
+  cam(G + 2.6, 1230, 360, 585, 900, 0.5);             // the one read it is allowed, on the market monitor
+  cam(O + 6.6, 840, 430, 490, 770, 0.5);              // back to the chat, then the order
+  cam(B - 0.3, 840, 370, 510, 780, 0.4);              // the route and the ticket
+  cam(PP, 920, 470, 500, 780, 0.5);                   // the envelope drops into the hatch
+  tl.to(P, { follow: 1, duration: 0.5, ease: 'power1.inOut' }, L0 - 0.3);   // then the camera rides the pipe with it
+  tl.to(P, { follow: 0, duration: 0.6, ease: 'power1.inOut' }, R);
+  cam(R, 840, 380, 510, 780, 0.6);                    // order complete
+  cam(R + 1.5, 430, 430, 520, 800, 0.5);              // shades
+  cam(R + 2.6, 1300, 470, 520, 800, 0.5);             // the robot would like some credit
+  cam(R + 3.9, 840, 380, 510, 780, 0.6);
 
   var starts = SCENES.map(function (sc) { return tl.labels[sc.id]; });
   var DUR = tl.duration();
@@ -1095,21 +1137,38 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 
   var hotEls = $$('.hot');
   // The SVG letterboxes inside the stage, so scene coordinates map to pixels through this fit.
-  // Portrait crops the scene (slice) and a camera pans the crop to follow the action; tags follow the camera and are
-  // clamped to the visible width. Landscape shows the whole scene and never pans.
-  var stage = $('#stage'), scene = $('#scene'), camEl = $('#cam'), fit = { s: 1, ox: 0, oy: 0, W: 0, pad: 0, cover: false, half: 800, dx: 0 };
+  // Portrait crops the scene (slice) and a camera pans and zooms the crop to the action: P.cx/cy is the frame point to
+  // centre and P.cw/ch the size that must stay in view; the zoom is whatever makes that fit, never under 1, so the crop
+  // never shows past the frame. Landscape shows the whole frame and never moves. Tags map through the same camera.
+  var stage = $('#stage'), scene = $('#scene'), camEl = $('#cam'), fit = { s: 1, ox: 0, oy: 0, W: 0, pad: 0, cover: false, vw: 1600, vh: 900, k: 1, tx: 0, ty: 0 };
   function measure() {
     var W = stage.clientWidth, H = stage.clientHeight, cover = W < H;
     scene.setAttribute('preserveAspectRatio', cover ? 'xMidYMid slice' : 'xMidYMid meet');
     fit.cover = cover; fit.W = W;
     fit.s = cover ? Math.max(W / 1600, H / 900) : Math.min(W / 1600, H / 900);
     fit.ox = (W - 1600 * fit.s) / 2; fit.oy = (H - 900 * fit.s) / 2;
-    fit.pad = 40 * fit.s; fit.half = W / fit.s / 2;
+    fit.pad = 40 * fit.s; fit.vw = W / fit.s; fit.vh = H / fit.s;
     hotEls.forEach(function (b) { b._k = ''; });
   }
+  var FOLLOW = [440, 680]; // the view that rides the envelope through the pipes
   function applyCam() {
-    var dx = fit.cover ? 800 - Math.min(1600 - fit.half, Math.max(fit.half, P.cam)) : 0;
-    if (fit.dx !== dx || camEl._dx !== dx) { fit.dx = dx; camEl._dx = dx; camEl.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' 0)'); }
+    var k = 1, tx = 0, ty = 0;
+    if (fit.cover) {
+      var cx = P.cx, cy = P.cy, cw = P.cw, ch = P.ch, f = P.follow;
+      if (f > 0) {
+        var pt = pipe.getPointAtLength(Math.min(Math.max(P.line, 0), TOTAL)), ey = pt.y + gsap.getProperty('#world', 'y');
+        cx += (pt.x - cx) * f; cy += (ey - cy) * f; cw += (FOLLOW[0] - cw) * f; ch += (FOLLOW[1] - ch) * f;
+      }
+      k = Math.min(2.2, Math.max(1, Math.min(fit.vw / cw, fit.vh / ch)));
+      var hw = fit.vw / k / 2, hh = fit.vh / k / 2;
+      cx = Math.min(1600 - hw, Math.max(hw, cx)); cy = Math.min(900 - hh, Math.max(hh, cy));
+      tx = 800 - k * cx; ty = 450 - k * cy;
+    }
+    var tr = fit.cover ? 'translate(' + tx.toFixed(1) + ' ' + ty.toFixed(1) + ') scale(' + k.toFixed(4) + ')' : '';
+    if (camEl._tr !== tr) {
+      camEl._tr = tr; fit.k = k; fit.tx = tx; fit.ty = ty;
+      if (tr) camEl.setAttribute('transform', tr); else camEl.removeAttribute('transform');
+    }
   }
   measure();
   var HOT_POS = {
@@ -1130,11 +1189,11 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
       if (i === 4 && t < T.panDownDone) on = false;
       if (i === 5 && t < T.panUpDone) on = false;
       if (on) {
-        var key = p[0] + ',' + p[1] + ',' + fit.dx;
+        var key = p[0] + ',' + p[1] + ',' + fit.k + ',' + fit.tx + ',' + fit.ty;
         if (b._k !== key) {
-          var sx = fit.ox + (p[0] + fit.dx) * fit.s, cx = Math.min(fit.W - fit.pad, Math.max(fit.pad, sx));
+          var sx = fit.ox + (fit.k * p[0] + fit.tx) * fit.s, cx = Math.min(fit.W - fit.pad, Math.max(fit.pad, sx));
           var y = cx !== sx && p[2] != null ? p[2] : p[1];
-          b.style.left = cx.toFixed(1) + 'px'; b.style.top = (fit.oy + y * fit.s).toFixed(1) + 'px'; b._k = key;
+          b.style.left = cx.toFixed(1) + 'px'; b.style.top = (fit.oy + (fit.k * y + fit.ty) * fit.s).toFixed(1) + 'px'; b._k = key;
         }
       }
       if (b._on !== on) {
@@ -1159,6 +1218,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
       if (k === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
       b.classList.toggle('done', k < i);
     });
+    chipBtns.forEach(function (b) { b.classList.toggle('on', SCENES[i].chips.indexOf(b.dataset.chip) >= 0); });
+    chips.classList.toggle('all', SCENES[i].chips.length === WORK.length);
   }
 
   var userTxt = $('#userTxt'), passTxt = $('#passTxt'), fillBar = $('#fillBar'), fillTxt = $('#fillTxt'), intro = $('#intro'), pin = $('#pin'), chatIn = $('#chatIn'), chatPh = $('#chatPh');

@@ -351,7 +351,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <rect x="620" y="196" width="440" height="274" rx="10" fill="#f3ead6" stroke="#10172a" stroke-width="4"/>
 <path d="M620 206Q620 196 630 196H1050Q1060 196 1060 206V226H620Z" fill="#10172a"/>
 <text x="636" y="218" class="s-disp" font-size="18" fill="#f3ead6" letter-spacing="1.5">AI ASSISTANT</text>
-<text x="776" y="217" class="s-mono" font-size="11" fill="#ffb000">via MCP gateway</text>
+<text x="776" y="217" class="s-mono" font-size="11" fill="#ffb000">via agent gateway</text>
 <g class="s-mono" font-size="14">
 <g id="m1" opacity="0"><rect x="810" y="236" width="234" height="28" rx="8" fill="#10172a"/><text x="1032" y="255" text-anchor="end" fill="#f3ead6">What’s new in the market?</text></g>
 <g id="d2" opacity="0"><rect x="636" y="270" width="56" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><circle cx="652" cy="284" r="3" fill="#6b5f48"/><circle cx="664" cy="284" r="3" fill="#6b5f48"/><circle cx="676" cy="284" r="3" fill="#6b5f48"/></g>
@@ -527,10 +527,10 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <rect x="120" y="680" width="280" height="150" rx="8" fill="#553420" stroke="#372012" stroke-width="4"/><rect x="230" y="740" width="60" height="12" rx="6" fill="#372012"/>
 <rect x="1240" y="680" width="280" height="150" rx="8" fill="#553420" stroke="#372012" stroke-width="4"/><rect x="1350" y="740" width="60" height="12" rx="6" fill="#372012"/>
 <rect x="948" y="698" width="114" height="92" rx="6" fill="#0b0f1a"/>
-<!-- MCP gateway, built into the desk front beside the pipes: the badge reader an agent must pass before it touches internal tools; each scope lights on its own -->
+<!-- Agent gateway, built into the desk front beside the pipes: the badge reader an agent must pass before it touches internal tools; each scope lights on its own -->
 <g id="gateway">
 <rect x="700" y="652" width="200" height="164" rx="10" fill="#1b1613" stroke="#10172a" stroke-width="4"/>
-<text x="716" y="680" class="s-mono" font-size="14" font-weight="600" fill="#ffb000" letter-spacing="1">MCP GATEWAY</text>
+<text x="716" y="680" class="s-mono" font-size="13" font-weight="600" fill="#ffb000" letter-spacing="1">AGENT GATEWAY</text>
 <rect x="842" y="662" width="44" height="28" rx="5" fill="#0f0c0a" stroke="#5a4a3c" stroke-width="2"/>
 <circle id="gwLed" cx="864" cy="676" r="5" fill="#4a3d33"/>
 <g class="s-mono" font-size="16" font-weight="500" fill="#e8dcc4"><text x="738" y="716">QUOTES</text><text x="738" y="742">NEWS</text><text x="738" y="768">TRADING</text></g>
@@ -673,21 +673,21 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     { id: 'iam', tag: 'Identity', title: 'Identity & sign-in', org: 'Identity & Access Management · 2024–26',
       text: 'Every app has a velvet rope, and I helped work the door for 100M+ logins a day.',
       stack: ['OAuth2', 'OIDC', 'SAML', 'PingFederate'] },
+    { id: 'mcp', tag: 'AI gateway', title: 'AI agent gateway', org: 'Identity & Access Management · 2024–26',
+      text: 'The robot can only look things up because something checks its badge first. I built that something: one front door for every AI agent in the firm, and it’s open for business.',
+      stack: ['MCP', 'Python', 'FastMCP', 'Netty', 'Java'] },
     { id: 'exec', tag: 'Execution', title: 'Order execution', org: 'Asset Management Trading · 2026–present',
       text: '“Execute at best” is one click for the trader. Slicing it, sending it to the venues and getting it filled is the machinery behind that click. I build the machinery.',
       stack: ['Java', 'FIX', 'OMS/EMS', 'Kafka'] },
     { id: 'pay', tag: 'Payments', title: 'Payments pipeline', org: 'Payments Engineering · 2022–24',
       text: 'Every booked trade becomes a payment with somewhere to be. Under the desk I helped move a small city’s worth of them a day, with more money than there are stars, and got each one there in a quarter of the time.',
-      stack: ['Java', 'Spring Boot', 'Kafka', 'BigQuery', 'Grafana'] },
-    { id: 'mcp', tag: 'AI gateway', title: 'AI agent gateway', org: 'Identity & Access Management · 2024–26',
-      text: 'The robot can only look things up because something checks its badge first. I built that something: one front door for every AI agent in the firm, and it’s open for business.',
-      stack: ['MCP', 'Python', 'FastMCP', 'Netty', 'Java'] }
+      stack: ['Java', 'Spring Boot', 'Kafka', 'BigQuery', 'Grafana'] }
   ];
   // chips: which of the WORK cards the scene is about (lit in the portrait strip)
   var SCENES = [
     { id: 'arrival', clock: '06:58', name: 'Arrival', chips: [], caption: "He's in early. The coffee is load-bearing." },
     { id: 'login', clock: '06:59', name: 'Login', chips: ['iam'], caption: 'Before anything trades, the desk has to know who he is. I worked on that part.' },
-    { id: 'order', clock: '07:00', name: 'The pick', chips: ['mcp'], caption: 'He asks the AI assistant. It has to get past my gateway first: it can read the market, but only he can trade.' },
+    { id: 'order', clock: '07:00', name: 'The pick', chips: ['mcp'], caption: 'He asks the AI assistant. It has to get past the agent gateway first: it can read the market, but only he can trade.' },
     { id: 'booked', clock: '07:00', name: 'Booked', chips: ['exec'], caption: 'Sliced across venues, filled and booked. I work on the order and execution systems behind this.' },
     { id: 'pipeline', clock: '07:01', name: 'Pipeline', chips: ['pay'], caption: 'Under the desk, the money starts moving. I worked on these pipes too.' },
     { id: 'reveal', clock: '07:02', name: 'Reveal', chips: ['iam', 'exec', 'pay', 'mcp'], caption: 'COFE closed the morning up 4.20%. The robot would like some credit.' }

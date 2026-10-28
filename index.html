@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nahom Atsbeha</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Nahom Atsbeha, software engineer: an animated walkthrough of a trader's morning and the systems I've built underneath it.">
 <link rel="canonical" href="https://nahomatsbeha.fyi/">
 <!-- link previews (iMessage, Slack, LinkedIn, X): Open Graph + large-image card -->
@@ -16,7 +19,7 @@
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="An illustrated trader at his desk at dawn, facing an urgent order to buy 50,000 shares of an unreadable ticker.">
+<meta property="og:image:alt" content="An illustrated trader at his desk at dawn, about to buy 50,000 shares of COFE on his AI assistant&#39;s tip, beside a gateway panel showing it may read quotes and news but not trade.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,6 +63,9 @@ body{margin:0;background:var(--night);color:var(--text);font:400 16px/1.55 var(-
 .bar{position:relative;z-index:6;flex:none;height:44px;display:flex;align-items:center;gap:20px;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));background:var(--night);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:baseline;gap:12px;flex:none;min-width:0}
 .brand h1{font:900 22px/1 var(--display);letter-spacing:.02em;margin:0;text-transform:uppercase;white-space:nowrap}
+.brand h1 a{color:inherit;text-decoration:none}
+.brand h1 a:hover{color:var(--amber)}
+.brand h1 a:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
 .brand p{margin:0;font:500 13px/1.3 var(--body);color:var(--muted);white-space:nowrap}
 .tape{flex:1 1 0;min-width:0;overflow:hidden;color:var(--amber);font:500 11px/1 var(--mono);letter-spacing:.04em;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
 .tape-track{display:flex;width:max-content;animation:tape 52s linear infinite}
@@ -180,10 +186,10 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <main>
 <div class="scrolly" id="scrolly"><div class="pin" id="pin">
   <header class="bar">
-    <div class="brand"><h1>Nahom Atsbeha</h1><p>Software engineer · trading systems, identity, payments, AI agents</p></div>
+    <div class="brand"><h1><a href="#top" id="toTop" aria-label="Nahom Atsbeha, back to the top">Nahom Atsbeha</a></h1><p>Software engineer · trading systems, identity, payments, AI agents</p></div>
     <div class="tape" aria-hidden="true"><div class="tape-track">
-<span>COFE <b class="up">▲ 4.20%</b></span><span>SLEEP <b class="dn">▼ 11.00%</b></span><span>CI-BUILD <b class="fl">◆ PENDING</b></span><span>MTGS <b class="up">▲ 300.00%</b></span><span>??? <b class="fl">◆ HALTED: UNREADABLE</b></span><span>MONDAY <b class="dn">▼ 2.10%</b></span><span>BAGL <b class="up">▲ 2.00%</b></span><span>NAPS <b class="up">▲ UPGRADED</b></span>
-<span>COFE <b class="up">▲ 4.20%</b></span><span>SLEEP <b class="dn">▼ 11.00%</b></span><span>CI-BUILD <b class="fl">◆ PENDING</b></span><span>MTGS <b class="up">▲ 300.00%</b></span><span>??? <b class="fl">◆ HALTED: UNREADABLE</b></span><span>MONDAY <b class="dn">▼ 2.10%</b></span><span>BAGL <b class="up">▲ 2.00%</b></span><span>NAPS <b class="up">▲ UPGRADED</b></span>
+<span>COFE <b class="up">▲ 4.20%</b></span><span>SLEEP <b class="dn">▼ 11.00%</b></span><span>CI-BUILD <b class="fl">◆ PENDING</b></span><span>MTGS <b class="up">▲ 300.00%</b></span><span>ROBOT <b class="fl">◆ HAS A HUNCH</b></span><span>MONDAY <b class="dn">▼ 2.10%</b></span><span>BAGL <b class="up">▲ 2.00%</b></span><span>NAPS <b class="up">▲ UPGRADED</b></span>
+<span>COFE <b class="up">▲ 4.20%</b></span><span>SLEEP <b class="dn">▼ 11.00%</b></span><span>CI-BUILD <b class="fl">◆ PENDING</b></span><span>MTGS <b class="up">▲ 300.00%</b></span><span>ROBOT <b class="fl">◆ HAS A HUNCH</b></span><span>MONDAY <b class="dn">▼ 2.10%</b></span><span>BAGL <b class="up">▲ 2.00%</b></span><span>NAPS <b class="up">▲ UPGRADED</b></span>
     </div></div>
     <nav class="links" aria-label="Contact"><a href="mailto:nahomatsbeha15@gmail.com"><span class="full">nahomatsbeha15@gmail.com</span><span class="short">Email</span></a><a href="https://linkedin.com/in/nahomatsbeha" target="_blank" rel="noopener">LinkedIn</a></nav>
   </header>
@@ -203,7 +209,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <g id="envShape"><rect x="-30" y="-20" width="60" height="40" rx="4" fill="#f3ead6" stroke="#10172a" stroke-width="3"/><path d="M-27 -17L0 4L27 -17" fill="none" stroke="#10172a" stroke-width="3" stroke-linejoin="round"/><circle cx="0" cy="4" r="6" fill="#c23a26" stroke="#10172a" stroke-width="2"/></g>
 </defs>
 
-<g clip-path="url(#cView)"><g id="world">
+<g clip-path="url(#cView)"><g id="cam"><g id="world">
 <g id="office">
 <rect width="1600" height="900" fill="#2a2420"/>
 <rect y="470" width="1600" height="160" fill="#211c18"/>
@@ -327,20 +333,42 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text x="594" y="474" class="s-mono" font-size="12" fill="#6f7fa3">P&amp;L: let's not look yet</text>
 </g>
 
+<!-- AI assistant chat: he asks, the agent answers via the gateway; message slots fill top to bottom -->
+<g id="chat" opacity="0">
+<rect x="620" y="196" width="440" height="274" rx="10" fill="#f3ead6" stroke="#10172a" stroke-width="4"/>
+<path d="M620 206Q620 196 630 196H1050Q1060 196 1060 206V226H620Z" fill="#10172a"/>
+<text x="636" y="218" class="s-disp" font-size="18" fill="#f3ead6" letter-spacing="1.5">AI ASSISTANT</text>
+<text x="776" y="217" class="s-mono" font-size="11" fill="#ffb000">via MCP gateway</text>
+<g class="s-mono" font-size="14">
+<g id="m1" opacity="0"><rect x="810" y="236" width="234" height="28" rx="8" fill="#10172a"/><text x="1032" y="255" text-anchor="end" fill="#f3ead6">What’s new in the market?</text></g>
+<g id="d2" opacity="0"><rect x="636" y="270" width="56" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><circle cx="652" cy="284" r="3" fill="#6b5f48"/><circle cx="664" cy="284" r="3" fill="#6b5f48"/><circle cx="676" cy="284" r="3" fill="#6b5f48"/></g>
+<g id="m2" opacity="0"><rect x="636" y="270" width="242" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><text x="648" y="289" fill="#10172a">One sec. Showing my badge.</text></g>
+<g id="d3" opacity="0"><rect x="636" y="304" width="56" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><circle cx="652" cy="318" r="3" fill="#6b5f48"/><circle cx="664" cy="318" r="3" fill="#6b5f48"/><circle cx="676" cy="318" r="3" fill="#6b5f48"/></g>
+<g id="m3" opacity="0"><rect x="636" y="304" width="326" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><text x="648" y="323" fill="#10172a">COFE is heating up. You’ve had four.</text></g>
+<g id="m4" opacity="0"><rect x="928" y="338" width="116" height="28" rx="8" fill="#10172a"/><text x="1032" y="357" text-anchor="end" fill="#f3ead6">Buy 50,000.</text></g>
+<g id="d5" opacity="0"><rect x="636" y="372" width="56" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><circle cx="652" cy="386" r="3" fill="#6b5f48"/><circle cx="664" cy="386" r="3" fill="#6b5f48"/><circle cx="676" cy="386" r="3" fill="#6b5f48"/></g>
+<g id="m5" opacity="0"><rect x="636" y="372" width="318" height="28" rx="8" fill="#fffaf0" stroke="#c9bc9c" stroke-width="2"/><text x="648" y="391" fill="#10172a">Can’t. No trading badge. You do it.</text></g>
+<rect x="636" y="420" width="408" height="34" rx="8" fill="#fff" stroke="#c9bc9c" stroke-width="2"/>
+<text id="chatPh" x="650" y="442" fill="#a09585">Ask anything…</text>
+<text id="chatIn" x="650" y="442" fill="#10172a"></text>
+</g>
+<circle cx="1024" cy="437" r="11" fill="#ffb000"/><path d="M1024 443V431M1019 436l5-5l5 5" stroke="#10172a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+
 <g id="popup" opacity="0">
 <rect x="640" y="226" width="400" height="230" rx="10" fill="#f3ead6" stroke="#10172a" stroke-width="4"/>
 <path d="M640 236Q640 226 650 226H1030Q1040 226 1040 236V262H640Z" fill="#ffb000" stroke="#10172a" stroke-width="4" stroke-linejoin="round"/>
-<text x="658" y="252" class="s-disp" font-size="20" fill="#10172a" letter-spacing="1.5">CLIENT ORDER · URGENT</text>
+<text x="658" y="252" class="s-disp" font-size="20" fill="#10172a" letter-spacing="1.5">NEW ORDER · URGENT</text>
 <text x="658" y="318" class="s-disp" font-size="52" fill="#10172a">BUY 50,000</text>
-<text x="884" y="318" class="s-disp tk" font-size="52" fill="#c23a26">???</text>
+<text x="884" y="318" class="s-disp" font-size="52" fill="#c23a26">COFE</text>
 <text x="658" y="346" class="s-mono" font-size="13" fill="#4a5570">Instruction: execute at best</text>
-<text x="658" y="366" class="s-mono" font-size="13" fill="#4a5570">Limit: none. Patience: none.</text>
+<text x="658" y="366" class="s-mono" font-size="13" fill="#4a5570">Idea: the AI. Patience: none.</text>
 <g id="execBtn"><rect id="execRect" x="658" y="384" width="364" height="52" rx="8" fill="#10172a"/><text x="840" y="419" text-anchor="middle" class="s-disp" font-size="27" fill="#f3ead6" letter-spacing="2">EXECUTE AT BEST</text></g>
 </g>
 
 <g id="scrRoute" opacity="0">
 <rect x="578" y="178" width="524" height="312" fill="#0f1830"/>
-<text x="594" y="204" class="s-mono" font-size="13" fill="#8fa6d6">Working 50,000 <tspan class="tk">???</tspan> at best</text>
+<text x="594" y="204" class="s-mono" font-size="13" fill="#8fa6d6">Working 50,000 COFE at best</text>
 <path d="M718 328C820 328 860 263 958 263M718 328H958M718 328C820 328 860 403 958 403" stroke="#3d5590" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
 <rect x="598" y="292" width="120" height="72" rx="8" fill="#f3ead6" stroke="#10172a" stroke-width="3"/>
 <text x="658" y="320" text-anchor="middle" class="s-mono" font-size="11" font-weight="600" fill="#10172a">PARENT ORDER</text>
@@ -357,7 +385,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <g id="scrFinal" opacity="0">
 <rect x="578" y="178" width="524" height="312" fill="#0f1830"/>
 <text x="594" y="204" class="s-mono" font-size="13" fill="#8fa6d6">Order complete</text>
-<text x="840" y="306" text-anchor="middle" class="s-disp" font-size="64" fill="#f3ead6">BUY 50,000 <tspan class="tk" fill="#ffb000">???</tspan></text>
+<text x="840" y="306" text-anchor="middle" class="s-disp" font-size="64" fill="#f3ead6">BUY 50,000 <tspan fill="#ffb000">COFE</tspan></text>
 <text x="840" y="358" text-anchor="middle" class="s-mono" font-size="16" font-weight="600" fill="#4fd18b">FILLED ✓   BOOKED ✓   SETTLED ✓</text>
 <text x="840" y="428" text-anchor="middle" class="s-mono" font-size="13" fill="#a09585">Trade date 28-Oct · avg 101.37 · 3 venues</text>
 </g>
@@ -385,22 +413,12 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text x="1214" y="211" class="s-mono" font-size="11" font-weight="600" fill="#fff" letter-spacing="1">QUOTES</text>
 <g class="s-mono" font-size="10" fill="#c98a00"><text x="1214" y="232">TICKER</text><text x="1340" y="232" text-anchor="end">LAST</text><text x="1424" y="232" text-anchor="end">CHG</text></g>
 <g id="quotes"></g>
+<rect id="cofeHi" x="1209" y="240" width="220" height="14" rx="2" fill="none" stroke="#ffb000" stroke-width="2" opacity="0"/>
 <rect x="1206" y="352" width="226" height="18" fill="#4a2e00"/>
 <text x="1214" y="365" class="s-mono" font-size="11" font-weight="600" fill="#fff" letter-spacing="1">TOP NEWS</text>
 <g clip-path="url(#cHeads)"><g id="heads"></g></g>
 <rect x="1206" y="486" width="226" height="16" fill="#1a1200"/>
 <g class="s-mono" font-size="9" fill="#c98a00" letter-spacing="1"><text x="1214" y="497" fill="#ffb000">NEWS</text><text x="1258" y="497">QUOTE</text><text x="1308" y="497">CHART</text><text x="1356" y="497">MSG</text><text x="1392" y="497">HELP</text></g>
-</g>
-<g id="termShrug" opacity="0">
-<rect x="1206" y="174" width="226" height="328" fill="#000"/>
-<text x="1214" y="191" class="s-mono" font-size="12" font-weight="600" fill="#ffb000">SECURITY LOOKUP</text>
-<text x="1424" y="191" text-anchor="end" class="s-mono" font-size="10" fill="#c98a00">NY 07:00</text>
-<rect x="1206" y="198" width="226" height="18" fill="#4a2e00"/>
-<text x="1214" y="211" class="s-mono" font-size="11" font-weight="600" fill="#fff" letter-spacing="1"><tspan class="tk">???</tspan> EQUITY</text>
-<text x="1319" y="300" text-anchor="middle" class="s-mono" font-size="34" fill="#ffb000">¯\_(ツ)_/¯</text>
-<text x="1319" y="334" text-anchor="middle" class="s-mono" font-size="13" font-weight="600" fill="#fff">NO DATA FOR <tspan class="tk" fill="#ffb000">???</tspan></text>
-<text x="1319" y="356" text-anchor="middle" class="s-mono" font-size="10" fill="#c98a00">0 QUOTES · 0 NEWS · 0 ANALYSTS</text>
-<text x="1319" y="384" text-anchor="middle" class="s-mono" font-size="12" font-weight="600" fill="#ffb000">GOOD LUCK</text>
 </g>
 <g id="termFinal" opacity="0">
 <rect x="1206" y="174" width="226" height="328" fill="#000"/>
@@ -408,12 +426,12 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text x="1424" y="191" text-anchor="end" class="s-mono" font-size="10" fill="#c98a00">NY 07:02</text>
 <rect x="1206" y="198" width="226" height="18" fill="#7a1c10"/>
 <text x="1214" y="211" class="s-mono" font-size="11" font-weight="600" fill="#fff" letter-spacing="1">BREAKING</text>
-<text x="1214" y="244" class="s-mono" font-size="13" font-weight="600" fill="#ffb000">MYSTERY TICKER</text>
-<text x="1214" y="262" class="s-mono" font-size="13" font-weight="600" fill="#fff">IDENTIFIED AS <tspan class="tk" fill="#ffb000">???</tspan></text>
-<g class="s-mono" font-size="11" fill="#ffb000"><text x="1214" y="296"><tspan fill="#c98a00">07:02 </tspan>ANALYSTS: STRONG BREW</text><text x="1214" y="314"><tspan fill="#c98a00">07:02 </tspan>ALL ORDERS SETTLED</text><text x="1214" y="332"><tspan fill="#c98a00">07:01 </tspan>DESK ORDERS A SECOND CUP</text><text x="1214" y="350"><tspan fill="#c98a00">06:57 </tspan>COFFEE FUTURES SURGE</text></g>
+<text x="1214" y="244" class="s-mono" font-size="13" font-weight="600" fill="#ffb000">COFE +4.20%</text>
+<text x="1214" y="262" class="s-mono" font-size="13" font-weight="600" fill="#fff">ON HEAVY DESK DEMAND</text>
+<g class="s-mono" font-size="11" fill="#ffb000"><text x="1214" y="296"><tspan fill="#c98a00">07:02 </tspan>ANALYSTS: STRONG BREW</text><text x="1214" y="314"><tspan fill="#c98a00">07:02 </tspan>ALL ORDERS SETTLED</text><text x="1214" y="332"><tspan fill="#c98a00">07:01 </tspan>DESK ORDERS A SECOND CUP</text><text x="1214" y="350"><tspan fill="#c98a00">07:00 </tspan>ROBOT CALLS IT EARLY</text></g>
 </g>
 </g>
-<g transform="rotate(7 1522 214)"><rect x="1496" y="190" width="54" height="48" fill="#ffd96a" stroke="#10172a" stroke-width="2"/><text x="1523" y="210" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">BUY LOW</text><text x="1523" y="226" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">SELL HI</text></g>
+<g transform="rotate(-6 1156 324)"><rect x="1129" y="300" width="54" height="48" fill="#ffd96a" stroke="#10172a" stroke-width="2"/><text x="1156" y="320" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">BUY LOW</text><text x="1156" y="336" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">SELL HI</text></g>
 </g>
 
 <g id="kbd"><rect x="636" y="578" width="292" height="20" rx="5" fill="#1a2340" stroke="#10172a" stroke-width="4"/><path d="M650 587H914" stroke="#3a4a76" stroke-width="5" stroke-dasharray="14 6"/></g>
@@ -437,10 +455,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <rect x="1452" y="589" width="20" height="8" rx="3" fill="#10172a"/><rect x="1488" y="589" width="20" height="8" rx="3" fill="#10172a"/>
 </g>
 <g id="bubble" opacity="0">
-<path d="M1286 418H1462A12 12 0 0 1 1474 430V462A12 12 0 0 1 1462 474H1458L1454 496L1438 474H1286A12 12 0 0 1 1274 462V430A12 12 0 0 1 1286 418Z" fill="#f3ead6" stroke="#10172a" stroke-width="3"/>
-<text id="b1" x="1374" y="452" text-anchor="middle" class="s-body" font-size="17" font-weight="700" fill="#10172a">I can look it up!</text>
-<text id="b2" x="1374" y="452" text-anchor="middle" class="s-body" font-size="17" font-weight="700" fill="#10172a" opacity="0">…or not.</text>
-<text id="b3" x="1374" y="452" text-anchor="middle" class="s-body" font-size="17" font-weight="700" fill="#10172a" opacity="0">Told you.</text>
+<path d="M1248 418H1462A12 12 0 0 1 1474 430V462A12 12 0 0 1 1462 474H1458L1454 496L1438 474H1248A12 12 0 0 1 1236 462V430A12 12 0 0 1 1248 418Z" fill="#f3ead6" stroke="#10172a" stroke-width="3"/>
+<text id="b3" x="1355" y="452" text-anchor="middle" class="s-body" font-size="17" font-weight="700" fill="#10172a">Told you.</text>
 </g>
 </g>
 
@@ -498,12 +514,27 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <rect x="120" y="680" width="280" height="150" rx="8" fill="#553420" stroke="#372012" stroke-width="4"/><rect x="230" y="740" width="60" height="12" rx="6" fill="#372012"/>
 <rect x="1240" y="680" width="280" height="150" rx="8" fill="#553420" stroke="#372012" stroke-width="4"/><rect x="1350" y="740" width="60" height="12" rx="6" fill="#372012"/>
 <rect x="948" y="698" width="114" height="92" rx="6" fill="#0b0f1a"/>
+<!-- MCP gateway, built into the desk front beside the pipes: the badge reader an agent must pass before it touches internal tools; each scope lights on its own -->
+<g id="gateway">
+<rect x="700" y="652" width="200" height="164" rx="10" fill="#1b1613" stroke="#10172a" stroke-width="4"/>
+<text x="716" y="680" class="s-mono" font-size="14" font-weight="600" fill="#ffb000" letter-spacing="1">MCP GATEWAY</text>
+<rect x="842" y="662" width="44" height="28" rx="5" fill="#0f0c0a" stroke="#5a4a3c" stroke-width="2"/>
+<circle id="gwLed" cx="864" cy="676" r="5" fill="#4a3d33"/>
+<g class="s-mono" font-size="16" font-weight="500" fill="#e8dcc4"><text x="738" y="716">QUOTES</text><text x="738" y="742">NEWS</text><text x="738" y="768">TRADING</text></g>
+<circle id="gwL1" cx="722" cy="711" r="7" fill="#4a3d33" stroke="#10172a" stroke-width="2"/>
+<circle id="gwL2" cx="722" cy="737" r="7" fill="#4a3d33" stroke="#10172a" stroke-width="2"/>
+<circle id="gwL3" cx="722" cy="763" r="7" fill="#4a3d33" stroke="#10172a" stroke-width="2"/>
+<g class="s-mono" font-size="17" font-weight="600" text-anchor="end"><text id="gwM1" x="886" y="716" fill="#4fd18b" opacity="0">✓</text><text id="gwM2" x="886" y="742" fill="#4fd18b" opacity="0">✓</text><text id="gwM3" x="886" y="768" fill="#ff8a78" opacity="0">✗</text></g>
+<path d="M712 782H888" stroke="#3a2f27" stroke-width="2"/>
+<text id="gwLog" x="800" y="804" text-anchor="middle" class="s-mono" font-size="12" fill="#c98a00" opacity="0">LOGGED 07:00</text>
+</g>
 <g id="hatchDoor">
 <rect x="944" y="694" width="122" height="100" rx="8" fill="#4d2f1d" stroke="#2a180e" stroke-width="4"/>
 <text x="1005" y="738" text-anchor="middle" class="s-disp" font-size="22" fill="#dcb88c" letter-spacing="3">PIPES</text>
 <path d="M1005 750v24m-9-9l9 9l9-9" stroke="#dcb88c" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </g>
+<g id="gwBadge" opacity="0"><rect x="-11" y="-8" width="22" height="16" rx="3" fill="#f3ead6" stroke="#10172a" stroke-width="2"/><rect x="-7" y="-4" width="6" height="8" rx="1" fill="#ffb000"/><path d="M2 -2H7M2 2H7" stroke="#10172a" stroke-width="1.5"/></g>
 
 <g id="bonk" opacity="0" stroke="#ffb000" stroke-width="4" stroke-linecap="round"><path d="M470 560l-14-10M474 580h-18M470 600l-14 10"/></g>
 <g id="whoosh" opacity="0" stroke="#c9d3e8" stroke-width="4" stroke-linecap="round"><path d="M950 520h-60M958 545h-90M950 570h-50"/></g>
@@ -517,7 +548,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <path d="M704 142H976" stroke="#10172a" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round"/>
 <text x="712" y="184" class="s-disp" font-size="34" fill="#10172a" letter-spacing="1.5">TRADE TICKET</text>
 <g class="s-mono" font-size="14" fill="#5b5141"><text x="712" y="218">ID</text><text x="712" y="244">SIDE</text><text x="712" y="270">QTY</text><text x="712" y="296">SYMBOL</text><text x="712" y="322">AVG PX</text><text x="712" y="348">VENUES</text></g>
-<g class="s-mono" font-size="14" font-weight="600" fill="#10172a"><text x="806" y="218">T-0700-0042</text><text x="806" y="244">BUY</text><text x="806" y="270">50,000</text><text x="806" y="296" class="tk">???</text><text x="806" y="322">101.37</text><text x="806" y="348">3</text></g>
+<g class="s-mono" font-size="14" font-weight="600" fill="#10172a"><text x="806" y="218">T-0700-0042</text><text x="806" y="244">BUY</text><text x="806" y="270">50,000</text><text x="806" y="296">COFE</text><text x="806" y="322">101.37</text><text x="806" y="348">3</text></g>
 <g id="stamp" opacity="0"><rect x="730" y="364" width="220" height="74" rx="8" fill="none" stroke="#c23a26" stroke-width="6"/><text x="840" y="420" text-anchor="middle" class="s-disp" font-size="56" fill="#c23a26" letter-spacing="4">BOOKED</text></g>
 </g>
 <g id="envA" opacity="0"><use href="#envShape"/></g>
@@ -572,7 +603,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text id="settledTxt" x="240" y="1402" text-anchor="middle" class="s-disp" font-size="42" fill="#4fd18b" opacity="0" letter-spacing="2">SETTLED ✓</text>
 <g id="confetti"></g>
 </g>
-</g></g>
+</g></g></g>
 </svg>
 
     <button class="hot" type="button" data-hot="iam" tabindex="-1" aria-hidden="true" aria-haspopup="dialog"><i></i><b>Identity</b></button>
@@ -641,10 +672,10 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   var SCENES = [
     { id: 'arrival', clock: '06:58', name: 'Arrival', caption: "He's in early. The coffee is load-bearing." },
     { id: 'login', clock: '06:59', name: 'Login', caption: 'Before anything trades, the desk has to know who he is. I worked on that part.' },
-    { id: 'order', clock: '07:00', name: 'The order', caption: 'A client wants 50,000 shares of something. Execute at best. Nobody can read the ticker.' },
+    { id: 'order', clock: '07:00', name: 'The pick', caption: 'He asks the AI assistant. It has to get past my gateway first: it can read the market, but only he can trade.' },
     { id: 'booked', clock: '07:00', name: 'Booked', caption: 'Sliced across venues, filled and booked. I work on the order and execution systems behind this.' },
     { id: 'pipeline', clock: '07:01', name: 'Pipeline', caption: 'Under the desk, the money starts moving. I worked on these pipes too.' },
-    { id: 'reveal', clock: '07:02', name: 'Reveal', caption: 'The mystery ticker was COFE all along. Of course it was.' }
+    { id: 'reveal', clock: '07:02', name: 'Reveal', caption: 'COFE closed the morning up 4.20%. The robot would like some credit.' }
   ];
 
   /* ---------- static rendering ---------- */
@@ -763,7 +794,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   var minHands = $$('.mh'), hNY = $('#hNY'), hLDN = $('#hLDN'), hTYO = $('#hTYO');
 
   /* ---------- timeline ---------- */
-  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418 };
+  // cam: the scene x the portrait crop centres on (landscape shows the whole width and ignores it)
+  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cam: 800, q1: 0, q2: 0 };
   var T = {};
   var started = false;
 
@@ -775,6 +807,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   gsap.set('#bHead', { svgOrigin: '1062 376' });
   gsap.set('#stamp', { svgOrigin: '840 401' });
   gsap.set('#bubble', { svgOrigin: '1454 496' });
+  gsap.set('#gwBadge', { svgOrigin: '0 0' });
   gsap.set('#crack', { svgOrigin: '700 540' });
   gsap.set('#hatchDoor', { svgOrigin: '1005 694' });
   gsap.set('#spokes', { svgOrigin: '240 1530' });
@@ -795,11 +828,14 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   gsap.set('#ticket', { y: -60 });
   gsap.set('#stamp', { scale: 2.4, rotation: -10 });
   gsap.set('#bubble', { scale: 0 });
+  gsap.set('#chat', { y: -30 });
+  gsap.set('#gwBadge', { x: 1480, y: 560 });
   gsap.set('#crack', { scale: 0 });
   gsap.set('#shades', { y: -90 });
   gsap.set('#worker', { x: -30 });
   gsap.set('#settledTxt', { y: 12 });
 
+  var Q1 = $('#m1 text').textContent, Q2 = $('#m4 text').textContent;
   var tl = gsap.timeline({ paused: true, onUpdate: syncAll });
 
   // Arrival
@@ -868,45 +904,76 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     .to('#token', { y: 392, duration: 0.2, yoyo: true, repeat: 1 }, L + 8.2)
     .to('#granted', { opacity: 1, duration: 0.25 }, L + 8.4);
 
-  // Order
-  var O = L + 9.4;
+  // The pick: he asks the AI assistant in a chat; the agent clears the gateway to read the market, and it may not trade
+  var O = L + 9.4, G = O + 3.3;
   tl.addLabel('order', O)
     .to(P, { clk: 420, duration: 0.6, ease: 'power1.inOut' }, O)
     .to('#scrIam', { opacity: 0, duration: 0.3 }, O)
     .to('#scrPlat', { opacity: 1, duration: 0.3 }, O)
     .to('#trader', { rotation: 0, duration: 0.4 }, O)
-    .to('#popup', { opacity: 1, y: 0, duration: 0.45, ease: 'back.out(2)' }, O + 1.0)
-    .to('#brow', { y: -6, duration: 0.15 }, O + 1.5)
-    .to('#pupil', { scale: 1.5, duration: 0.15 }, O + 1.5)
-    .to('#mouthN', { opacity: 0, duration: 0.05 }, O + 1.5)
-    .to('#mouthG', { opacity: 1, duration: 0.05 }, O + 1.5)
-    .to('#sweat', { opacity: 1, duration: 0.2 }, O + 1.7)
-    .to('#drop1', { y: 26, opacity: 0, duration: 0.7, ease: 'power1.in', repeat: 2 }, O + 1.8)
-    .to('#drop2', { y: 22, opacity: 0, duration: 0.6, ease: 'power1.in', repeat: 2 }, O + 2.0)
-    .to('#pupil', { x: 6, duration: 0.2 }, O + 2.4)
-    .to('#termShrug', { opacity: 1, duration: 0.15 }, O + 2.7)
-    .set('#bubble', { opacity: 1 }, O + 3.3)
-    .to('#bubble', { scale: 1, duration: 0.3, ease: 'back.out(2.5)' }, O + 3.3)
-    .to('#b1', { opacity: 0, duration: 0.1 }, O + 4.4)
-    .to('#b2', { opacity: 1, duration: 0.1 }, O + 4.4)
-    .to('#termShrug', { opacity: 0, duration: 0.2 }, O + 5.0)
-    .to('#bubble', { scale: 0, duration: 0.2, ease: 'power2.in' }, O + 5.2)
-    .to('#trader', { y: -8, duration: 0.18, yoyo: true, repeat: 1 }, O + 5.0)
-    .to('#head', { rotation: -6, duration: 0.18, yoyo: true, repeat: 1 }, O + 5.0)
-    .to('#pupil', { x: 2, duration: 0.2 }, O + 5.1)
-    .to('#cursor', { opacity: 1, duration: 0.1 }, O + 5.3)
-    .to('#cursor', { x: 832, y: 404, duration: 0.8, ease: 'power2.inOut' }, O + 5.4)
-    .to('#arm', { rotation: -32, duration: 0.22, ease: 'power2.out' }, O + 6.0)
-    .to('#arm', { rotation: 3, duration: 0.1, ease: 'power4.in' }, O + 6.3)
-    .to('#arm', { rotation: 0, duration: 0.15 }, O + 6.4)
-    .to('#execRect', { fill: '#ff6f59', duration: 0.06 }, O + 6.4)
-    .to('#execBtn', { y: 3, duration: 0.06, yoyo: true, repeat: 1 }, O + 6.4)
-    .set('#clickBurst', { opacity: 1 }, O + 6.4)
-    .to('#clickBurst', { opacity: 0, duration: 0.3 }, O + 6.6)
-    .to('#world', { x: 6, duration: 0.04, yoyo: true, repeat: 5, ease: 'none' }, O + 6.4);
+    .to('#chat', { opacity: 1, y: 0, duration: 0.4, ease: 'back.out(2)' }, O + 0.4)
+    .to(P, { q1: Q1.length, duration: 1.1, ease: 'none' }, O + 0.9)
+    .to('#arm', { rotation: 2.5, duration: 0.07, yoyo: true, repeat: 15, ease: 'none' }, O + 0.9)
+    .set(P, { q1: 0 }, O + 2.1)
+    .set('#m1', { opacity: 1 }, O + 2.1)
+    .set('#d2', { opacity: 1 }, O + 2.4)
+    .set('#d2', { opacity: 0 }, O + 2.9)
+    .set('#m2', { opacity: 1 }, O + 2.9)
+    .to('#bot', { y: -8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power2.out' }, O + 2.9)
+    .to('#pupil', { x: 3, y: 3, duration: 0.2 }, O + 3.1)
+    // badge from the robot down to the reader in the desk; the reader approves, each scope lights in turn, the call is logged
+    .set('#gwBadge', { opacity: 1 }, G)
+    .to('#gwBadge', { x: 864, duration: 0.8, ease: 'power1.inOut' }, G)
+    .to('#gwBadge', { y: 676, duration: 0.8, ease: 'power2.in' }, G)
+    .to('#gwLed', { fill: '#ffb000', duration: 0.05, yoyo: true, repeat: 3 }, G + 0.85)
+    .to('#gwLed', { fill: '#4fd18b', duration: 0.1 }, G + 1.1)
+    .to('#gwL1', { fill: '#4fd18b', duration: 0.1 }, G + 1.35)
+    .to('#gwM1', { opacity: 1, duration: 0.1 }, G + 1.35)
+    .to('#gwL2', { fill: '#4fd18b', duration: 0.1 }, G + 1.7)
+    .to('#gwM2', { opacity: 1, duration: 0.1 }, G + 1.7)
+    .to('#gwL3', { fill: '#c23a26', duration: 0.1 }, G + 2.05)
+    .to('#gwM3', { opacity: 1, duration: 0.1 }, G + 2.05)
+    .to('#gateway', { x: 3, duration: 0.04, yoyo: true, repeat: 3, ease: 'none' }, G + 2.05)
+    .to('#gwLog', { opacity: 1, duration: 0.15 }, G + 2.45)
+    .to('#gwBadge', { x: 1480, y: 560, opacity: 0, duration: 0.6, ease: 'power1.out' }, G + 2.5)
+    // the one read it is allowed: COFE lights up on the market monitor
+    .to('#cofeHi', { opacity: 1, duration: 0.08, yoyo: true, repeat: 3 }, G + 2.8)
+    .set('#cofeHi', { opacity: 1 }, G + 3.2)
+    .to('#pupil', { x: 2, y: 0, duration: 0.2 }, O + 6.4)
+    .set('#d3', { opacity: 1 }, O + 6.6)
+    .set('#d3', { opacity: 0 }, O + 7.1)
+    .set('#m3', { opacity: 1 }, O + 7.1)
+    .to('#bot', { y: -10, duration: 0.15, yoyo: true, repeat: 3, ease: 'power2.out' }, O + 7.1)
+    .to(P, { q2: Q2.length, duration: 0.6, ease: 'none' }, O + 7.6)
+    .to('#arm', { rotation: 2.5, duration: 0.07, yoyo: true, repeat: 7, ease: 'none' }, O + 7.6)
+    .set(P, { q2: 0 }, O + 8.4)
+    .set('#m4', { opacity: 1 }, O + 8.4)
+    .set('#d5', { opacity: 1 }, O + 8.7)
+    .set('#d5', { opacity: 0 }, O + 9.2)
+    .set('#m5', { opacity: 1 }, O + 9.2)
+    // so he places the order himself
+    .to('#brow', { y: -6, duration: 0.15 }, O + 9.8)
+    .to('#pupil', { scale: 1.5, duration: 0.15 }, O + 9.8)
+    .to('#mouthN', { opacity: 0, duration: 0.05 }, O + 9.8)
+    .to('#mouthG', { opacity: 1, duration: 0.05 }, O + 9.8)
+    .to('#chat', { opacity: 0, duration: 0.25 }, O + 10.0)
+    .to('#popup', { opacity: 1, y: 0, duration: 0.45, ease: 'back.out(2)' }, O + 10.1)
+    .to('#sweat', { opacity: 1, duration: 0.2 }, O + 10.4)
+    .to('#drop1', { y: 26, opacity: 0, duration: 0.7, ease: 'power1.in', repeat: 1 }, O + 10.5)
+    .to('#drop2', { y: 22, opacity: 0, duration: 0.6, ease: 'power1.in', repeat: 1 }, O + 10.7)
+    .to('#cursor', { opacity: 1, duration: 0.1 }, O + 11.5)
+    .to('#cursor', { x: 832, y: 404, duration: 0.8, ease: 'power2.inOut' }, O + 11.6)
+    .to('#arm', { rotation: -32, duration: 0.22, ease: 'power2.out' }, O + 12.2)
+    .to('#arm', { rotation: 3, duration: 0.1, ease: 'power4.in' }, O + 12.5)
+    .to('#arm', { rotation: 0, duration: 0.15 }, O + 12.6)
+    .to('#execRect', { fill: '#ff6f59', duration: 0.06 }, O + 12.6)
+    .to('#execBtn', { y: 3, duration: 0.06, yoyo: true, repeat: 1 }, O + 12.6)
+    .set('#clickBurst', { opacity: 1 }, O + 12.6)
+    .to('#clickBurst', { opacity: 0, duration: 0.3 }, O + 12.8)
+    .to('#world', { x: 6, duration: 0.04, yoyo: true, repeat: 5, ease: 'none' }, O + 12.6);
 
   // Booked
-  var B = O + 7.4;
+  var B = O + 13.6;
   tl.addLabel('booked', B)
     .to('#popup', { opacity: 0, duration: 0.25 }, B)
     .to('#cursor', { opacity: 0, duration: 0.2 }, B)
@@ -978,7 +1045,6 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   // Reveal
   var R = pipeEnd;
   T.panUpDone = R + 1.4;
-  T.resolve = R + 1.6;
   tl.addLabel('reveal', R)
     .to('#world', { y: 0, duration: 1.4, ease: 'power2.inOut' }, R)
     .to(P, { clk: 422, duration: 0.6, ease: 'power1.inOut' }, R)
@@ -991,9 +1057,10 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     .to('#trader', { rotation: -5, duration: 0.5, ease: 'power2.out' }, R + 1.6)
     .set('#shades', { opacity: 1 }, R + 2.2)
     .to('#shades', { y: 0, duration: 0.55, ease: 'bounce.out' }, R + 2.2)
-    .to('#b2', { opacity: 0, duration: 0.01 }, R + 3.0)
-    .to('#b3', { opacity: 1, duration: 0.01 }, R + 3.0)
+    .set('#bubble', { opacity: 1 }, R + 3.0)
     .to('#bubble', { scale: 1, duration: 0.3, ease: 'back.out(2.5)' }, R + 3.0)
+    .to(P, { cam: 1400, duration: 0.6, ease: 'power2.inOut' }, R + 2.6)
+    .to(P, { cam: 800, duration: 0.6, ease: 'power2.inOut' }, R + 3.9)
     .to('#bot', { y: -14, duration: 0.18, yoyo: true, repeat: 3, ease: 'power2.out' }, R + 3.0)
     .to({}, { duration: 0.01 }, R + 4.6);
 
@@ -1028,23 +1095,29 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 
   var hotEls = $$('.hot');
   // The SVG letterboxes inside the stage, so scene coordinates map to pixels through this fit.
-  // Portrait crops the scene to the monitor column (slice), so tags are also clamped into the visible x range.
-  var stage = $('#stage'), scene = $('#scene'), fit = { s: 1, ox: 0, oy: 0, x0: 0, x1: 1600 };
+  // Portrait crops the scene (slice) and a camera pans the crop to follow the action; tags follow the camera and are
+  // clamped to the visible width. Landscape shows the whole scene and never pans.
+  var stage = $('#stage'), scene = $('#scene'), camEl = $('#cam'), fit = { s: 1, ox: 0, oy: 0, W: 0, pad: 0, cover: false, half: 800, dx: 0 };
   function measure() {
     var W = stage.clientWidth, H = stage.clientHeight, cover = W < H;
     scene.setAttribute('preserveAspectRatio', cover ? 'xMidYMid slice' : 'xMidYMid meet');
+    fit.cover = cover; fit.W = W;
     fit.s = cover ? Math.max(W / 1600, H / 900) : Math.min(W / 1600, H / 900);
     fit.ox = (W - 1600 * fit.s) / 2; fit.oy = (H - 900 * fit.s) / 2;
-    fit.x0 = -fit.ox / fit.s + 40; fit.x1 = (W - fit.ox) / fit.s - 40;
+    fit.pad = 40 * fit.s; fit.half = W / fit.s / 2;
     hotEls.forEach(function (b) { b._k = ''; });
+  }
+  function applyCam() {
+    var dx = fit.cover ? 800 - Math.min(1600 - fit.half, Math.max(fit.half, P.cam)) : 0;
+    if (fit.dx !== dx || camEl._dx !== dx) { fit.dx = dx; camEl._dx = dx; camEl.setAttribute('transform', 'translate(' + dx.toFixed(1) + ' 0)'); }
   }
   measure();
   var HOT_POS = {
     iam: { 1: [640, 214], 5: [396, 452] },
-    exec: { 2: [1064, 214], 3: [1064, 214], 5: [1064, 214] },
+    exec: { 2: [1064, 172], 3: [1064, 172], 5: [1064, 172] },
     pay: { 4: [430, 196], 5: [1005, 676] },
     // third value: the height to use when the portrait crop pushes the tag in from the edge (the robot is off-crop)
-    mcp: { 0: [1480, 658, 440], 1: [1480, 658, 440], 2: [1480, 658, 440], 3: [1480, 658, 440], 5: [1480, 658, 440] }
+    mcp: { 0: [800, 624], 1: [800, 624], 2: [800, 624], 3: [800, 624], 5: [800, 624] }
   };
   hotEls.forEach(function (b) {
     var w = WORK.filter(function (x) { return x.id === b.dataset.hot; })[0];
@@ -1057,10 +1130,11 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
       if (i === 4 && t < T.panDownDone) on = false;
       if (i === 5 && t < T.panUpDone) on = false;
       if (on) {
-        var key = p[0] + ',' + p[1];
+        var key = p[0] + ',' + p[1] + ',' + fit.dx;
         if (b._k !== key) {
-          var x = Math.min(fit.x1, Math.max(fit.x0, p[0])), y = x !== p[0] && p[2] != null ? p[2] : p[1];
-          b.style.left = (fit.ox + x * fit.s).toFixed(1) + 'px'; b.style.top = (fit.oy + y * fit.s).toFixed(1) + 'px'; b._k = key;
+          var sx = fit.ox + (p[0] + fit.dx) * fit.s, cx = Math.min(fit.W - fit.pad, Math.max(fit.pad, sx));
+          var y = cx !== sx && p[2] != null ? p[2] : p[1];
+          b.style.left = cx.toFixed(1) + 'px'; b.style.top = (fit.oy + y * fit.s).toFixed(1) + 'px'; b._k = key;
         }
       }
       if (b._on !== on) {
@@ -1087,11 +1161,14 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     });
   }
 
-  var userTxt = $('#userTxt'), passTxt = $('#passTxt'), fillBar = $('#fillBar'), fillTxt = $('#fillTxt'), intro = $('#intro'), pin = $('#pin');
+  var userTxt = $('#userTxt'), passTxt = $('#passTxt'), fillBar = $('#fillBar'), fillTxt = $('#fillTxt'), intro = $('#intro'), pin = $('#pin'), chatIn = $('#chatIn'), chatPh = $('#chatPh');
   function syncAll() {
     var t = tl.time();
     if (started !== t > 0.01) { started = t > 0.01; intro.classList.toggle('gone', started); pin.classList.toggle('started', started); }
     setClock(P.clk);
+    applyCam();
+    var typed = Q1.slice(0, Math.round(P.q1)) || Q2.slice(0, Math.round(P.q2));
+    if (chatIn._t !== typed) { chatIn.textContent = typed; chatPh.setAttribute('opacity', typed ? 0 : 1); chatIn._t = typed; }
     userTxt.textContent = 'j.desk'.slice(0, Math.round(P.user));
     passTxt.textContent = new Array(Math.round(P.pass) + 1).join('•');
     var filled = Math.round(P.fill * 500) * 100;
@@ -1122,7 +1199,14 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     else gsap.to(tl, { time: scrollTime(), duration: 0.5, ease: 'power2.out', overwrite: true });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', function () { measure(); onScroll(); syncAll(); });
+  window.addEventListener('resize', onScroll);
+  // The stage also changes size on its own (in portrait the caption strip under it grows and shrinks with the caption),
+  // so tags are re-fitted on any stage resize, not just window resizes.
+  new ResizeObserver(function () { measure(); syncAll(); }).observe(stage);
+  $('#toTop').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
   railBtns.forEach(function (b) {
     b.addEventListener('click', function () {
       var top = scrolly.getBoundingClientRect().top + window.scrollY;
@@ -1136,22 +1220,6 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   }
 
   /* ---------- ambient loops ---------- */
-  var TICKER = 'COFE', LET = 'ABCDEFGHJKLMNPQRSTUVWXYZ?';
-  function rnd(n) { var s = ''; for (var k = 0; k < n; k++) s += LET[Math.floor(Math.random() * LET.length)]; return s; }
-  var tkEls = $$('.tk'), lastTk = '';
-  function tickerText(t) {
-    if (!started || t < O + 1.0) return '???';
-    if (t < T.resolve) return reduce ? '???' : rnd(4);
-    var k = Math.min(4, Math.floor((t - T.resolve) / 0.28) + 1);
-    if (reduce || k >= 4) return TICKER;
-    return TICKER.slice(0, k) + rnd(4 - k);
-  }
-  function tickTicker() {
-    var s = tickerText(tl.time());
-    if (s !== lastTk) { tkEls.forEach(function (e) { e.textContent = s; }); lastTk = s; }
-  }
-  setInterval(tickTicker, 90);
-
   if (!reduce) {
     gsap.to('#heads', { y: -128, duration: 12, ease: 'none', repeat: -1 });
     gsap.to('#steam path', { y: -14, opacity: 0, duration: 2, ease: 'sine.out', stagger: { each: 0.6, repeat: -1 } });

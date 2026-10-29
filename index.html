@@ -266,6 +266,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <g class="meThumb" opacity="0" transform="rotate(-26.6 33 -44)"><rect x="26.5" y="-50" width="13" height="12" rx="4" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/><rect x="30.25" y="-39" width="5.5" height="11" rx="2.75" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/></g>
 <g class="mePoint" opacity="0"><circle cx="33" cy="-43" r="5.5" fill="#b9794f" stroke="#10172a" stroke-width="2.5"/><path d="M36 -37L40.5 -28" stroke="#10172a" stroke-width="5.5" stroke-linecap="round"/><path d="M36 -37L40.5 -28" stroke="#b9794f" stroke-width="2.5" stroke-linecap="round"/></g>
 <g class="meWrench" opacity="0"><path d="M36 -37L43 -23" stroke="#9fb0d6" stroke-width="7" stroke-linecap="round"/><circle cx="45.5" cy="-18" r="7" fill="none" stroke="#9fb0d6" stroke-width="4"/></g>
+<g class="meHammer" opacity="0"><path d="M33 -41L33 -13" stroke="#10172a" stroke-width="7.5" stroke-linecap="round"/><path d="M33 -41L33 -13" stroke="#8d5a3b" stroke-width="4" stroke-linecap="round"/><rect x="21" y="-21" width="24" height="12" rx="3" fill="#9fb0d6" stroke="#10172a" stroke-width="2.5"/></g>
 </g>
 <g class="meHead"><circle cx="-17" cy="-94" r="3.5" fill="#b9794f" stroke="#10172a" stroke-width="2"/><circle cx="17" cy="-94" r="3.5" fill="#b9794f" stroke="#10172a" stroke-width="2"/><circle cx="0" cy="-95" r="17" fill="#b9794f" stroke="#10172a" stroke-width="3"/><path d="M-17.5 -97Q-16 -117 0 -117Q16 -117 17.5 -97Q9 -105 0 -105Q-9 -105 -17.5 -97Z" fill="#1c1410" stroke="#10172a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="-6.5" cy="-94" r="5.5" fill="#fff" stroke="#10172a" stroke-width="2"/><circle cx="6.5" cy="-94" r="5.5" fill="#fff" stroke="#10172a" stroke-width="2"/><path d="M-1 -94h2M-12 -95h-4M12 -95h4" stroke="#10172a" stroke-width="2"/><circle cx="-5.5" cy="-93.5" r="2.2" fill="#10172a"/><circle cx="7.5" cy="-93.5" r="2.2" fill="#10172a"/><path d="M-5 -85Q0 -80 5 -85" stroke="#10172a" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
 <g class="meHat" opacity="0"><path d="M-18 -112a18 18 0 0 1 36 0z" fill="#ffb000" stroke="#10172a" stroke-width="3"/><rect x="-23" y="-115" width="46" height="6" rx="3" fill="#ffb000" stroke="#10172a" stroke-width="2"/></g>
@@ -604,8 +605,9 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <text x="1005" y="738" text-anchor="middle" class="s-disp" font-size="22" fill="#dcb88c" letter-spacing="3">PIPES</text>
 <path d="M1005 750v24m-9-9l9 9l9-9" stroke="#dcb88c" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<!-- the maker pops up beside the gateway reader from below the frame edge -->
+<!-- the maker pops up beside the gateway from below the frame edge, hammering the last bolts home as the robot comes over -->
 <g class="cameo" data-me="gate" data-card="mcp" transform="translate(650 892)"></g>
+<g id="gwBang" opacity="0" stroke="#ffb000" stroke-width="4" stroke-linecap="round"><path d="M706 780l-10-11M700 794h-15M706 808l-10 11"/></g>
 </g>
 <g id="gwBadge" opacity="0"><rect x="-11" y="-8" width="22" height="16" rx="3" fill="#f3ead6" stroke="#10172a" stroke-width="2"/><rect x="-7" y="-4" width="6" height="8" rx="1" fill="#ffb000"/><path d="M2 -2H7M2 2H7" stroke="#10172a" stroke-width="1.5"/></g>
 
@@ -642,18 +644,22 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <path id="pipePath" d="M1005 930L1005 970Q1005 1010 965 1010L200 1010Q160 1010 160 1050L160 1140Q160 1180 200 1180L1360 1180Q1400 1180 1400 1220L1400 1490Q1400 1530 1360 1530L330 1530" fill="none" stroke="#4a3a2e" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
 <path class="flow" d="M1005 930L1005 970Q1005 1010 965 1010L200 1010Q160 1010 160 1050L160 1140Q160 1180 200 1180L1360 1180Q1400 1180 1400 1220L1400 1490Q1400 1530 1360 1530L330 1530" fill="none" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/>
 <path d="M972 932L1038 932L1024 958L986 958Z" fill="#5a4a3c" stroke="#0f0b09" stroke-width="3"/>
+<!-- a length of the top run is out: the brick shows through the hole, and the maker fits the replacement as the first payment comes down -->
+<g id="pipeGap"><rect x="746" y="981" width="68" height="58" fill="url(#pBrick)"/><path d="M748 983v54M812 983v54" stroke="#0f0b09" stroke-width="6" stroke-linecap="round"/></g>
+<g id="pipePiece"><rect x="-37" y="-26" width="74" height="52" rx="5" fill="#4a3a2e" stroke="#0f0b09" stroke-width="6"/><path id="pieceFlow" class="flow" d="M-28 0H28" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round" opacity="0"/></g>
 <g class="s-mono" font-size="13" fill="#b3a28c" text-anchor="middle">
 <text x="280" y="1145">payments.booked</text><text x="610" y="1145">payments.validated</text><text x="970" y="1145">payments.enriched</text><text x="1240" y="1495">payments.screened</text><text x="850" y="1495">payments.routed</text>
 </g>
 
 <g id="ghosts"></g>
-<!-- the maker pushes the bag through the pipes: placed behind it every frame by renderPipe, drawn under it so his hands are on it -->
+<!-- the maker in the pipes: he stands fitting the replacement piece until the bag reaches him, then renderPipe places him 34 behind it, pushing; drawn under the bag so his hands are on it -->
 <g class="cameo" data-me="pipes" data-card="pay"></g>
 <g id="envB" opacity="0"><g id="envShake"><g transform="scale(.75)"><use href="#envShape"/></g><g id="envTag" opacity="0"><rect x="12" y="-36" width="36" height="17" rx="4" fill="#ffb000" stroke="#10172a" stroke-width="2"/><text x="30" y="-23.5" text-anchor="middle" class="s-mono" font-size="10" font-weight="600" fill="#10172a">+REF</text></g></g></g>
 <g id="stations"></g>
 
 <text id="jamTxt" x="1094" y="1108" text-anchor="middle" class="s-disp" font-size="36" fill="#ffb000" opacity="0" letter-spacing="2">JAM!</text>
 <text id="tinkTxt" x="1184" y="1286" text-anchor="start" class="s-disp" font-size="30" fill="#f3ead6" opacity="0" letter-spacing="2">TINK!</text>
+<text id="tinkTxt2" x="716" y="972" text-anchor="middle" class="s-disp" font-size="30" fill="#f3ead6" opacity="0" letter-spacing="2">TINK!</text>
 
 <!-- the screening crew: a worker under the SCREEN station who walks over and knocks the jam loose; mirrored so he works the bag from the right while the maker pushes from the left -->
 <g id="worker"><g transform="matrix(-1 0 0 1 2144 0)"><g id="workerBody">
@@ -867,6 +873,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     return lamp;
   });
   var D_JAM = nearest(1052, 1180);
+  var D_FIX = nearest(780, 1010), D_STAND = D_FIX - 44; // the open section he is fixing, and where he stands working it
   var GAP = 150, SPEED = 700;
 
   var ghG = $('#ghosts');
@@ -889,7 +896,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     var tip = document.createElementNS(NS, 'title'); tip.textContent = 'That’s me. Tap for ' + w.title;
     g.appendChild(tip); g.appendChild(body);
     me[g.dataset.me] = { body: body, head: body.querySelector('.meHead'), armL: body.querySelector('.meArmL'), armR: body.querySelector('.meArmR'),
-      open: body.querySelector('.meOpen'), thumb: body.querySelector('.meThumb'), point: body.querySelector('.mePoint'), wrench: body.querySelector('.meWrench'), hat: body.querySelector('.meHat') };
+      open: body.querySelector('.meOpen'), thumb: body.querySelector('.meThumb'), point: body.querySelector('.mePoint'), wrench: body.querySelector('.meWrench'), hammer: body.querySelector('.meHammer'), hat: body.querySelector('.meHat') };
     g.addEventListener('click', function (e) {
       // a cameo faded out with its screen is not a target
       var o = 1, n = g;
@@ -941,7 +948,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   /* ---------- timeline ---------- */
   // cx/cy/cw/ch: the portrait camera's frame point to centre and the size that must stay in view (the zoom follows from
   // that); follow 0..1 blends the camera onto the envelope in the pipes. Landscape shows the whole frame and ignores them.
-  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cx: 590, cy: 450, cw: 585, ch: 900, follow: 0, q1: 0, q2: 0, wave: 0 };
+  var P = { user: 0, pass: 0, fill: 0, line: 0, clk: 418, cx: 590, cy: 450, cw: 585, ch: 900, follow: 0, q1: 0, q2: 0, wave: 0, grab: 0, fitR: 112 };
   var T = {};
   var started = false;
 
@@ -966,6 +973,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   gsap.set(me.route.body, { y: 50, opacity: 0 });
   gsap.set(me.end.body, { y: 130 });
   gsap.set(me.pipes.body, { svgOrigin: '0 0' }); // he leans from the feet when he shoves
+  gsap.set(me.pipes.hat, { opacity: 1 }); // hard-hat territory down here
+  gsap.set('#pipePiece', { svgOrigin: '0 0', x: 788, y: 975, rotation: -30 });
   gsap.set('#wArm', { svgOrigin: '1006 1272' });
   gsap.set('#worker', { x: 90 }); // parked at the right end of the walkway, clear of the station's label; he walks in for the jam
   gsap.set('#coffee', { svgOrigin: '1010 598' });
@@ -1165,9 +1174,26 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     .to('#envA', { y: 745, duration: 0.7, ease: 'power2.in' }, PP + 0.75)
     .to('#envA', { scale: 0.4, opacity: 0, duration: 0.15 }, PP + 1.4)
     .to('#hatchDoor', { scaleY: 1, duration: 0.2 }, PP + 1.6)
-    .to('#world', { y: -900, duration: 1.4, ease: 'power2.inOut' }, PP + 1.7);
-  T.panDownDone = PP + 3.1;
-  var L0 = PP + 3.0;
+    .to('#world', { y: -900, duration: 1.4, ease: 'power2.inOut' }, PP + 1.5);
+  T.panDownDone = PP + 2.9;
+  var L0 = PP + 3.8;
+  // he heaves the replacement piece into the hole and wrenches it tight — the last turn lands as the bag comes down —
+  // then the flow picks back up through it, and as the bag rolls past he grabs on behind
+  tl.to('#pipePiece', { y: 969, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' }, PP + 2.5)
+    .to(me.pipes.body, { rotation: -10, duration: 0.2, ease: 'power2.out' }, PP + 2.8)
+    .to('#pipePiece', { x: 780, y: 1010, rotation: 0, duration: 0.4, ease: 'back.out(1.8)' }, PP + 2.85)
+    .to(me.pipes.body, { rotation: 0, duration: 0.25 }, PP + 3.15)
+    .to(me.pipes.wrench, { opacity: 1, duration: 0.12 }, PP + 3.3)
+    .to(P, { fitR: 95, duration: 0.18 }, PP + 3.3)
+    .to(P, { fitR: 68, duration: 0.11, yoyo: true, repeat: 1, ease: 'power2.inOut' }, PP + 3.55)
+    .set('#tinkTxt2', { opacity: 1 }, PP + 3.65)
+    .to('#tinkTxt2', { opacity: 0, duration: 0.2 }, PP + 3.82)
+    .to(P, { fitR: 68, duration: 0.11, yoyo: true, repeat: 1, ease: 'power2.inOut' }, PP + 3.9)
+    .set('#tinkTxt2', { opacity: 1 }, PP + 4.0)
+    .to('#tinkTxt2', { opacity: 0, duration: 0.2 }, PP + 4.17)
+    .to('#pieceFlow', { opacity: 1, duration: 0.25 }, PP + 4.1)
+    .to(me.pipes.wrench, { opacity: 0, duration: 0.15 }, L0 + 0.3)
+    .to(P, { grab: 1, duration: 0.3, ease: 'power1.inOut' }, L0 + 0.3);
   tl.to(P, { line: D_JAM, duration: D_JAM / SPEED, ease: 'none' }, L0);
   var J = L0 + D_JAM / SPEED;
   T.jamStart = J;
@@ -1238,8 +1264,21 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   [0, 1, 2].forEach(function (k) { nod(me.login, L + 4.95 + k * 0.85); });
   thumbsUp(me.login, L + 8.4);
   speak(says.list, L + 8.3, O);
-  // the pick: up beside the reader, yes to QUOTES and NEWS, no to TRADING, then back down when the order is in
-  tl.to(me.gate.body, { y: 0, duration: 0.45, ease: 'back.out(1.8)' }, G + 0.6);
+  // the pick: he's still bolting his gateway together as the robot walks over — three hammer blows, the last landing
+  // right as the reader beeps — then hat off, yes to QUOTES and NEWS, no to TRADING, and back down when the order is in
+  tl.set([me.gate.hammer, me.gate.hat], { opacity: 1 }, G - 0.45)
+    .to(me.gate.body, { y: 0, duration: 0.45, ease: 'back.out(1.8)' }, G - 0.4);
+  [0, 1, 2].forEach(function (hk) {
+    var th = G + 0.02 + hk * 0.28;
+    tl.to(me.gate.armR, { rotation: -155, duration: 0.17, ease: 'power2.out' }, th)
+      .to(me.gate.armR, { rotation: -98, duration: 0.09, ease: 'power3.in' }, th + 0.19)
+      .set('#gwBang', { opacity: 1 }, th + 0.27)
+      .to('#gwBang', { opacity: 0, duration: 0.12 }, th + 0.32)
+      .to('#gateway', { x: 2, duration: 0.05, yoyo: true, repeat: 1, ease: 'none' }, th + 0.27);
+  });
+  tl.to(me.gate.armR, { rotation: 0, duration: 0.22, ease: 'power2.inOut' }, G + 1.02)
+    .to(me.gate.hammer, { opacity: 0, duration: 0.15 }, G + 1.05)
+    .to(me.gate.hat, { y: -18, opacity: 0, duration: 0.3, ease: 'power1.out' }, G + 1.12);
   nod(me.gate, G + 1.35); nod(me.gate, G + 1.7);
   tl.to(me.gate.head, { rotation: -10, duration: 0.12, yoyo: true, repeat: 3, ease: 'sine.inOut' }, G + 2.05);
   speak(says.nice, G + 2.05, G + 3.3);
@@ -1250,9 +1289,9 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     .set(me.route.open, { opacity: 0 }, B + 0.3).set(me.route.point, { opacity: 1 }, B + 0.3);
   for (var fk = 0; fk < 6; fk++) tl.to(me.route.armR, { rotation: -63, duration: 0.1, yoyo: true, repeat: 1, ease: 'power2.out' }, B + 0.4 + fk * 0.22);
   thumbsUp(me.route, B + 2.6);
-  // pipeline: he pushes the bag the whole way (renderPipe places him); one wave from the vault door once it has settled
+  // pipeline: he fits the pipe, then pushes the bag the whole way (renderPipe places him); one wave from the vault door once it has settled
   tl.to(P, { wave: 1, duration: 0.2, yoyo: true, repeat: 3, ease: 'sine.inOut' }, tSettle + 0.2);
-  speak(says.through, L0 + 0.3, L0 + 1.5); // once the phone camera has caught up with the bag
+  speak(says.through, L0 + 0.45, L0 + 1.65); // yelled as he grabs on behind the bag
   speak(says.help, J + 0.3, J + 1.75);
   // reveal: up beside the robot, high five at "Told you."
   tl.to(me.end.body, { y: 0, duration: 0.5, ease: 'back.out(1.4)' }, R + 2.8)
@@ -1265,7 +1304,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   cam(L + 3.8, 870, 380, 560, 860, 0.4);              // the badge checks behind the login
   cam(O - 0.2, 840, 430, 490, 770, 0.4);              // the chat (after "You're on the list.")
   cam(G - 0.3, 1230, 520, 585, 900, 0.3);             // the robot reaches for its badge
-  cam(G, 760, 600, 520, 800, 0.8, 'power1.inOut');    // ride the badge down to the reader; wide enough for him and "Nice try, robot."
+  cam(G, 760, 600, 520, 800, 0.55, 'power1.inOut');   // down to the reader in time for the hammer blows; wide enough for "Nice try, robot."
   cam(G + 2.7, 1230, 360, 585, 900, 0.5);             // the one read it is allowed, on the market monitor
   cam(O + 6.6, 840, 430, 490, 770, 0.5);              // back to the chat, then the order
   cam(B - 0.3, 840, 370, 510, 780, 0.4);              // the route and the ticket
@@ -1295,14 +1334,15 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   }
   function renderPipe(d, t) {
     place(envB, d, d > 0 && d < TOTAL, 1);
-    // the maker runs 34 behind the bag pushing it; on the drops he slides down beside the pipe with it; he stops at the vault door
-    var dp = Math.min(Math.max(d - 34, 0), TOTAL - 34), q0 = pipe.getPointAtLength(dp), q1 = pipe.getPointAtLength(Math.min(dp + 2, TOTAL));
+    // until he grabs the bag (P.grab 0→1) he stands at D_STAND fitting the pipe, wrench arm on P.fitR; then he runs
+    // 34 behind it pushing; on the drops he slides down beside the pipe with it, and he stops at the vault door
+    var gb = P.grab, dp = Math.min(Math.max(d - 34, D_STAND), TOTAL - 34), q0 = pipe.getPointAtLength(dp), q1 = pipe.getPointAtLength(Math.min(dp + 2, TOTAL));
     var tx = q1.x - q0.x, ty = q1.y - q0.y, tn = Math.hypot(tx, ty) || 1; tx /= tn; ty /= tn;
-    var v = Math.abs(ty), pr = Math.max(0, tx), pl = Math.max(0, -tx), hop = d > 0 && d < TOTAL ? Math.abs(Math.sin(d / 37)) * 3 : 0; // a running bob, about three steps a second at pipe speed
+    var v = Math.abs(ty), pr = Math.max(0, tx), pl = Math.max(0, -tx), hop = (d > 0 && d < TOTAL ? Math.abs(Math.sin(d / 37)) * 3 : 0) * gb; // a running bob, about three steps a second at pipe speed
     // the inlet sits at the very top of the basement, so he hangs on below it (feet no higher than 1030) instead of poking out of the frame
     pusher.setAttribute('transform', 'translate(' + (q0.x + 44 * v).toFixed(1) + ' ' + Math.max(q0.y + 45 - hop, 1030).toFixed(1) + ')');
-    me.pipes.armR.setAttribute('transform', 'rotate(' + (-150 * v - 63 * pr - 110 * P.wave).toFixed(1) + ' 20 -70)');
-    me.pipes.armL.setAttribute('transform', 'rotate(' + (150 * v + 63 * pl).toFixed(1) + ' -20 -70)');
+    me.pipes.armR.setAttribute('transform', 'rotate(' + (gb * (-150 * v - 63 * pr - 110 * P.wave) + (1 - gb) * P.fitR).toFixed(1) + ' 20 -70)');
+    me.pipes.armL.setAttribute('transform', 'rotate(' + (gb * (150 * v + 63 * pl) + (1 - gb) * 15).toFixed(1) + ' -20 -70)');
     ghosts.forEach(function (g, k) { var gd = d - (k + 1) * GAP; place(g, gd, gd > 0 && gd < TOTAL, 0.4); });
     envTag.setAttribute('opacity', d > STN[1].d ? 1 : 0);
     lamps.forEach(function (l, k) {

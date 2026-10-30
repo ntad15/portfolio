@@ -1070,6 +1070,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 
   // The pick: he asks the AI assistant in a chat; the agent clears the gateway to read the market, and it may not trade
   var O = L + 9.4, G = O + 3.3;
+  T.gateIn = G - 0.3; // the robot reaches for its badge: from here the gateway is in the story
   tl.addLabel('order', O)
     .to(P, { clk: 420, duration: 0.6, ease: 'power1.inOut' }, O)
     .to('#scrIam', { opacity: 0, duration: 0.3 }, O)
@@ -1396,7 +1397,8 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     exec: { 2: [1064, 172], 3: [1064, 172], 5: [1064, 172] },
     pay: { 4: [430, 196], 5: [1005, 676] },
     // third value: the height to use when the portrait crop pushes the tag in from the edge (the robot is off-crop)
-    mcp: { 0: [800, 624], 1: [800, 624], 2: [800, 624], 3: [800, 624], 5: [800, 624] }
+    // the gateway's tag waits for the gateway: in the pick only once the robot goes for its badge (T.gateIn), then at the reveal
+    mcp: { 2: [800, 624], 5: [800, 624] }
   };
   hotEls.forEach(function (b) {
     var w = WORK.filter(function (x) { return x.id === b.dataset.hot; })[0];
@@ -1406,6 +1408,7 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
     hotEls.forEach(function (b) {
       var p = HOT_POS[b.dataset.hot][i];
       var on = started && !!p;
+      if (i === 2 && b.dataset.hot === 'mcp' && t < T.gateIn) on = false;
       if (i === 4 && t < T.panDownDone) on = false;
       if (i === 5 && t < T.panUpDone) on = false;
       if (on) {

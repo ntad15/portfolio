@@ -730,6 +730,32 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
   </div>
 </dialog>
 
+<script>
+// Visit ping: one push to my phone per visit, through the ntfy.sh topic below (subscribe to it in the ntfy app).
+// Open the site once with ?me on each of my own devices to mute them; local copies and automated browsers never ping.
+(function () {
+  'use strict';
+  var TOPIC = 'nahom-site-bb133e272ac6';
+  function get(s, k) { try { return window[s].getItem(k); } catch (e) { return null; } }
+  function put(s, k) { try { window[s].setItem(k, '1'); } catch (e) {} }
+  if (/[?&]me\b/.test(location.search)) {
+    put('localStorage', 'mutePing');
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
+  if (location.protocol !== 'https:' || navigator.webdriver || get('localStorage', 'mutePing') || get('sessionStorage', 'pinged')) return;
+  put('sessionStorage', 'pinged');
+  var ua = navigator.userAgent, from = 'direct', tz = '';
+  var device = /iPhone/.test(ua) ? 'iPhone' : /iPad/.test(ua) ? 'iPad' : /Android/.test(ua) ? 'Android' : /Macintosh/.test(ua) ? 'Mac'
+    : /Windows/.test(ua) ? 'Windows' : /Linux/.test(ua) ? 'Linux' : 'unknown device';
+  try { if (document.referrer) from = 'from ' + new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) {}
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var msg = [device, from, tz].filter(Boolean).join(' · ');
+  var url = 'https://ntfy.sh/' + TOPIC + '?title=' + encodeURIComponent("Someone's on the site") + '&tags=eyes';
+  // a plain-text POST: no preflight, and the beacon still goes out if they close the tab right away
+  if (navigator.sendBeacon) navigator.sendBeacon(url, msg);
+  else fetch(url, { method: 'POST', body: msg, mode: 'no-cors', keepalive: true }).catch(function () {});
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 (function () {

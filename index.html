@@ -733,21 +733,23 @@ dialog.ticket::backdrop{background:rgba(6,10,20,.74)}
 <script>
 // Visit ping: one push to my phone per visit, through the ntfy.sh topic below (subscribe to it in the ntfy app).
 // Open the site once with ?me on each of my own devices to mute them; local copies and automated browsers never ping.
+// Links I share carry ?from=<where> (e.g. ?from=linkedin), since apps like LinkedIn's often send no referrer.
 (function () {
   'use strict';
   var TOPIC = 'nahom-site-bb133e272ac6';
   function get(s, k) { try { return window[s].getItem(k); } catch (e) { return null; } }
   function put(s, k) { try { window[s].setItem(k, '1'); } catch (e) {} }
-  if (/[?&]me\b/.test(location.search)) {
-    put('localStorage', 'mutePing');
-    history.replaceState(null, '', location.pathname + location.hash);
-  }
+  var q = new URLSearchParams(location.search), tag = (q.get('from') || '').replace(/[^\w.-]/g, '').slice(0, 30);
+  if (q.has('me')) put('localStorage', 'mutePing');
+  // both are just for me: drop them from the address bar so a copied link doesn't carry them on
+  if (q.has('me') || q.has('from')) history.replaceState(null, '', location.pathname + location.hash);
   if (location.protocol !== 'https:' || navigator.webdriver || get('localStorage', 'mutePing') || get('sessionStorage', 'pinged')) return;
   put('sessionStorage', 'pinged');
   var ua = navigator.userAgent, from = 'direct', tz = '';
   var device = /iPhone/.test(ua) ? 'iPhone' : /iPad/.test(ua) ? 'iPad' : /Android/.test(ua) ? 'Android' : /Macintosh/.test(ua) ? 'Mac'
     : /Windows/.test(ua) ? 'Windows' : /Linux/.test(ua) ? 'Linux' : 'unknown device';
-  try { if (document.referrer) from = 'from ' + new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) {}
+  if (tag) from = 'from ' + tag + ' (tagged)';
+  else try { if (document.referrer) from = 'from ' + new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) {}
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
   var msg = [device, from, tz].filter(Boolean).join(' · ');
   var url = 'https://ntfy.sh/' + TOPIC + '?title=' + encodeURIComponent("Someone's on the site") + '&tags=eyes';
